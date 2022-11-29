@@ -48,5 +48,5 @@ public:
 	void selectStaff(int);
 	void insertStaff();
 	void updateStaff();
-	//void deleteStaff();
+	void deleteStaff();
 };

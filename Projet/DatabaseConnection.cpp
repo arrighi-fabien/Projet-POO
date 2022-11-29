@@ -43,6 +43,16 @@ DataSet^ DatabaseConnection::executeQuerySelect(String^ query, String^ table_nam
 	return this->sql_data_set;
 }
 
+int DatabaseConnection::executeQueryInsert(String^ query) {
+	this->setQuery(query);
+	this->sql_command->CommandText = this->sql_query;
+	this->sql_connection->Open();
+	this->sql_command->Connection = this->sql_connection;
+	int id = Convert::ToInt32(this->sql_command->ExecuteScalar());
+	this->sql_connection->Close();
+	return id;
+}
+
 DataSet^ DatabaseConnection::getDataSet() {
 	return this->sql_data_set;
 }
