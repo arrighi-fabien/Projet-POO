@@ -1,6 +1,6 @@
 #pragma once
 #include "DatabaseConnection.h"
-#include "Staff.h"
+#include "GpStaff.h"
 
 namespace Projet {
 
@@ -78,7 +78,7 @@ namespace Projet {
 	private: System::Windows::Forms::TextBox^ tb_manager;
 	private: System::Windows::Forms::Label^ label9;
 
-	private: Staff^ staff = gcnew Staff();
+	private: GpStaff^ gpStaff = gcnew GpStaff();
 	private: int mode;
 	private: int id;
 	private: System::Windows::Forms::Button^ btn_staff_update;
@@ -349,16 +349,16 @@ namespace Projet {
 #pragma endregion
 	private: System::Void StaffForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (this->mode == 2) {
-			staff->selectStaff(this->id);
-			tb_staff_lname->Text = staff->getLastName();
-			tb_staff_fname->Text = staff->getFirstName();
-			dp_staff_hiring_date->Value = Convert::ToDateTime(staff->getHiringDate());
-			tb_manager->Text = Convert::ToString(staff->getIdManager());
-			tb_staff_address->Text = staff->getAddress();
-			tb_staff_address_o->Text = staff->getAddressO();
-			tb_staff_postal_code->Text = staff->getPostalCode();
-			tb_staff_city->Text = staff->getCity();
-			tb_staff_country->Text = staff->getCountry();
+			gpStaff->selectStaff(this->id);
+			tb_staff_lname->Text = gpStaff->getStaff()->getLastName();
+			tb_staff_fname->Text = gpStaff->getStaff()->getFirstName();
+			dp_staff_hiring_date->Value = Convert::ToDateTime(gpStaff->getStaff()->getHiringDate());
+			tb_manager->Text = Convert::ToString(gpStaff->getStaff()->getIdManager());
+			tb_staff_address->Text = gpStaff->getAddress()->getAddress();
+			tb_staff_address_o->Text = gpStaff->getAddress()->getAddressO();
+			tb_staff_postal_code->Text = gpStaff->getAddress()->getPostalCode();
+			tb_staff_city->Text = gpStaff->getAddress()->getCity();
+			tb_staff_country->Text = gpStaff->getAddress()->getCountry();
 		}
 	}
 	private: System::Void btn_staff_create_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -389,9 +389,9 @@ namespace Projet {
 						else {
 							//if all the fields are valid create the staff
 							this->getTextBoxContent();
-							staff->insertStaff();
+							gpStaff->insertStaff();
 							MessageBox::Show("Le personnel a bien été ajouté", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-							delete staff;
+							delete gpStaff;
 							this->Close();
 						}
 					}
@@ -402,35 +402,35 @@ namespace Projet {
 	private: System::Void btn_staff_update_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (MessageBox::Show("Voulez-vous vraiment appliquer les modifications ?", "Modification", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 			this->getTextBoxContent();
-			staff->updateStaff();
+			gpStaff->updateStaff();
 			MessageBox::Show("Le personnel a bien été modifié", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			delete staff;
+			delete gpStaff;
 			this->Close();
 		}
 	}
 	private: System::Void btn_staff_delete_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (MessageBox::Show("Voulez-vous vraiment supprimer ce personnel ?", "Suppression", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			staff->deleteStaff();
+			gpStaff->deleteStaff();
 			MessageBox::Show("Le personnel a bien été supprimé", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			delete staff;
+			delete gpStaff;
 			this->Close();
 		}
 	}
 	void getTextBoxContent() {
-		staff->setLastName(tb_staff_lname->Text);
-		staff->setFirstName(tb_staff_fname->Text);
-		staff->setHiringDate(dp_staff_hiring_date->Value);
+		gpStaff->getStaff()->setLastName(tb_staff_lname->Text);
+		gpStaff->getStaff()->setFirstName(tb_staff_fname->Text);
+		gpStaff->getStaff()->setHiringDate(dp_staff_hiring_date->Value);
 		if (tb_manager->Text != "") {
-			staff->setIdManager(Convert::ToInt32(tb_manager->Text));
+			gpStaff->getStaff()->setIdManager(Convert::ToInt32(tb_manager->Text));
 		}
 		else {
-			staff->setIdManager(0);
+			gpStaff->getStaff()->setIdManager(0);
 		}
-		staff->setAddress(tb_staff_address->Text);
-		staff->setAddressO(tb_staff_address_o->Text);
-		staff->setPostalCode(tb_staff_postal_code->Text);
-		staff->setCity(tb_staff_city->Text);
-		staff->setCountry(tb_staff_country->Text);
+		gpStaff->getAddress()->setAddress(tb_staff_address->Text);
+		gpStaff->getAddress()->setAddressO(tb_staff_address_o->Text);
+		gpStaff->getAddress()->setPostalCode(tb_staff_postal_code->Text);
+		gpStaff->getAddress()->setCity(tb_staff_city->Text);
+		gpStaff->getAddress()->setCountry(tb_staff_country->Text);
 	}
 };
 }
