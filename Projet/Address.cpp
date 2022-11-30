@@ -67,3 +67,18 @@ int Address::getIdCountry() {
 String^ Address::getCountry() {
 	return this->country;
 }
+
+void Address::CityCountryExist(DatabaseConnection^ db) {
+	db->executeQuerySelect("SELECT * FROM country WHERE country_name = '" + this->getCountry() + "'", "Country");
+	DataSet^ data = db->getDataSet();
+	if (data->Tables["Country"]->Rows->Count == 0) {
+		db->executeQuery("INSERT INTO country (country_name) VALUES ('" + this->getCountry() + "')");
+	}
+	delete data;
+	db->executeQuerySelect("SELECT * FROM city WHERE city_name = '" + this->getCity() + "' AND id_country = (SELECT id_country FROM country WHERE country_name = '" + this->getCountry() + "')", "City");
+	DataSet^ data2 = db->getDataSet();
+	if (data2->Tables["City"]->Rows->Count == 0) {
+		db->executeQuery("INSERT INTO city (city_name, id_country) VALUES ('" + this->getCity() + "', (SELECT id_country FROM country WHERE country_name = '" + this->getCountry() + "'))");
+	}
+	delete data2;
+}

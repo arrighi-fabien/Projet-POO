@@ -19,5 +19,4 @@ public:
 	DataSet^ executeQuerySelect(String^ query, String^ table_name);
 	int executeQueryInsert(String^ query);
 	DataSet^ getDataSet();
-	bool isConnected();
 };

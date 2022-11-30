@@ -56,15 +56,3 @@ int DatabaseConnection::executeQueryInsert(String^ query) {
 DataSet^ DatabaseConnection::getDataSet() {
 	return this->sql_data_set;
 }
-
-bool DatabaseConnection::isConnected() {
-	try {
-		this->sql_connection->Open();
-		this->sql_connection->Close();
-		this->is_connected = true;
-	}
-	catch (Exception^ e) {
-		this->is_connected = false;
-	}
-	return this->is_connected;
-}

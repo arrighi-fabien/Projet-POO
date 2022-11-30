@@ -1,5 +1,7 @@
 #pragma once
+#include "DatabaseConnection.h"
 using namespace System;
+using namespace System::Data;
 
 ref class Address {
 private:
@@ -29,4 +31,5 @@ public:
 	String^ getCity();
 	int getIdCountry();
 	String^ getCountry();
+	void CityCountryExist(DatabaseConnection^ db);
 };

@@ -84,6 +84,15 @@ namespace Projet {
 	private: System::Windows::Forms::Button^ btn_staff_search;
 
 	private: GpStaff^ gpStaff = gcnew GpStaff();
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::DataGridView^ dataGridView3;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ textBox7;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::TextBox^ textBox8;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::TextBox^ textBox9;
+	private: System::Windows::Forms::Button^ button2;
 
 	private:
 		/// <summary>
@@ -132,12 +141,23 @@ namespace Projet {
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
+			this->tabPage2->SuspendLayout();
 			this->tabPage5->SuspendLayout();
 			this->tabPage6->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -233,9 +253,9 @@ namespace Projet {
 			// 
 			this->label1->Location = System::Drawing::Point(11, 12);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(91, 20);
+			this->label1->Size = System::Drawing::Size(117, 20);
 			this->label1->TabIndex = 6;
-			this->label1->Text = L"Numéro client";
+			this->label1->Text = L"Identifiant staff";
 			// 
 			// textBox1
 			// 
@@ -258,6 +278,15 @@ namespace Projet {
 			// 
 			// tabPage2
 			// 
+			this->tabPage2->Controls->Add(this->button1);
+			this->tabPage2->Controls->Add(this->dataGridView3);
+			this->tabPage2->Controls->Add(this->label8);
+			this->tabPage2->Controls->Add(this->textBox7);
+			this->tabPage2->Controls->Add(this->label9);
+			this->tabPage2->Controls->Add(this->textBox8);
+			this->tabPage2->Controls->Add(this->label10);
+			this->tabPage2->Controls->Add(this->textBox9);
+			this->tabPage2->Controls->Add(this->button2);
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPage2->Name = L"tabPage2";
@@ -498,6 +527,84 @@ namespace Projet {
 			this->button6->Text = L"Panier moyen (après remise)";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(349, 82);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(90, 23);
+			this->button1->TabIndex = 23;
+			this->button1->Text = L"Recherche";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// dataGridView3
+			// 
+			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Location = System::Drawing::Point(8, 192);
+			this->dataGridView3->Margin = System::Windows::Forms::Padding(4);
+			this->dataGridView3->Name = L"dataGridView3";
+			this->dataGridView3->ReadOnly = true;
+			this->dataGridView3->RowHeadersWidth = 51;
+			this->dataGridView3->Size = System::Drawing::Size(755, 177);
+			this->dataGridView3->TabIndex = 22;
+			// 
+			// label8
+			// 
+			this->label8->Location = System::Drawing::Point(12, 116);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(91, 20);
+			this->label8->TabIndex = 21;
+			this->label8->Text = L"Prénom";
+			// 
+			// textBox7
+			// 
+			this->textBox7->Location = System::Drawing::Point(14, 139);
+			this->textBox7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox7->Name = L"textBox7";
+			this->textBox7->Size = System::Drawing::Size(265, 22);
+			this->textBox7->TabIndex = 20;
+			// 
+			// label9
+			// 
+			this->label9->Location = System::Drawing::Point(12, 61);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(91, 20);
+			this->label9->TabIndex = 19;
+			this->label9->Text = L"Nom";
+			// 
+			// textBox8
+			// 
+			this->textBox8->Location = System::Drawing::Point(14, 83);
+			this->textBox8->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox8->Name = L"textBox8";
+			this->textBox8->Size = System::Drawing::Size(265, 22);
+			this->textBox8->TabIndex = 18;
+			// 
+			// label10
+			// 
+			this->label10->Location = System::Drawing::Point(12, 11);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(117, 20);
+			this->label10->TabIndex = 17;
+			this->label10->Text = L"Identifiant client";
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(14, 33);
+			this->textBox9->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(265, 22);
+			this->textBox9->TabIndex = 16;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(480, 78);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(225, 30);
+			this->button2->TabIndex = 15;
+			this->button2->Text = L"Créer un nouveau client";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -514,11 +621,14 @@ namespace Projet {
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
+			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			this->tabPage5->ResumeLayout(false);
 			this->tabPage5->PerformLayout();
 			this->tabPage6->ResumeLayout(false);
 			this->tabPage6->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->EndInit();
 			this->ResumeLayout(false);
 
 		}
