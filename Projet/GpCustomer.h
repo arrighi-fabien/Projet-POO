@@ -27,4 +27,5 @@ public:
 	//void updateCustomer();
 	//void deleteCustomer();
 	DataSet^ customerPreview(int, String^, String^);
+	void addValueDataSet(DataSet^, int, String^, String^, String^);
 };

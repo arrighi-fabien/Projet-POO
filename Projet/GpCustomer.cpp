@@ -66,13 +66,20 @@ void GpCustomer::selectCustomer(int id) {
 }
 
 void GpCustomer::insertCustomer() {
-	int id_user = this->getDb()->executeQueryInsert("INSERT INTO customer (first_name, last_name, birth_date, first_purchase) VALUES ('" + this->getCustomer()->getFirstName() + "', '" + this->getCustomer()->getBirthDate() + "', '" + this->getCustomer()->getFirstPurchase() + "')");
-	for (int i = 0; i < this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows->Count; i++) {
-		int id_address = this->getDb()->executeQueryInsert("INSERT INTO address (address, additional_address, postal_code, id_city) VALUES ('" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[1] + "', '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[2] + "', '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[3] + "', '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[4] + "')");
+	int id_user = this->getDb()->executeQueryInsert("INSERT INTO customer (first_name, last_name, birth_date, first_purchase) VALUES ('" + this->getCustomer()->getFirstName() + "', '" + this->getCustomer()->getLastName() + "', '" + this->getCustomer()->getBirthDate() + "', '" + this->getCustomer()->getFirstPurchase() + "'); SELECT @@IDENTITY");
+	Address^ address = gcnew Address();
+	for (int i = 0; i < this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows->Count-1; i++) {
+		address->setCity(this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[3]->ToString());
+		address->setCountry(this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[4]->ToString());
+		address->CityCountryExist(this->getDb());
+		int id_address = this->getDb()->executeQueryInsert("INSERT INTO address (address, additional_address, postal_code, id_city) VALUES ('" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[0] + "', '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[1] + "', '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[2] + "', (SELECT id_city FROM city WHERE city_name = '" + this->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[3] + "')); SELECT @@IDENTITY");
 		this->getDb()->executeQuery("INSERT INTO delivered_to (id_customer, id_address) VALUES ('" + id_user + "', '" + id_address + "')");
 	}
-	for (int i = 0; i < this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows->Count; i++) {
-		int id_address = this->getDb()->executeQueryInsert("INSERT INTO address (address, additional_address, postal_code, id_city) VALUES ('" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[1] + "', '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[2] + "', '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[3] + "', '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[4] + "')");
+	for (int i = 0; i < this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows->Count-1; i++) {
+		address->setCity(this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[3]->ToString());
+		address->setCountry(this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[4]->ToString());
+		address->CityCountryExist(this->getDb());
+		int id_address = this->getDb()->executeQueryInsert("INSERT INTO address (address, additional_address, postal_code, id_city) VALUES ('" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[0] + "', '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[1] + "', '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[2] + "', (SELECT id_city FROM city WHERE city_name = '" + this->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[3] + "')); SELECT @@IDENTITY");
 		this->getDb()->executeQuery("INSERT INTO billed_to (id_customer, id_address) VALUES ('" + id_user + "', '" + id_address + "')");
 	}
 }
@@ -96,4 +103,8 @@ DataSet^ GpCustomer::customerPreview(int id, String^ last_name, String^ first_na
 		return data;
 	}
 	return data;
+}
+
+void GpCustomer::addValueDataSet(DataSet^ data, int row, String^ table, String^ column, String^ value) {
+	data->Tables[table]->Rows[row]->ItemArray[data->Tables[table]->Columns[column]->Ordinal] = value;
 }

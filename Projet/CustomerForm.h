@@ -403,21 +403,38 @@ namespace Projet {
 		gpCustomer->getCustomer()->setFirstName(this->tb_customer_fname->Text);
 		gpCustomer->getCustomer()->setBirthDate(this->dp_customer_birth_date->Value);
 		gpCustomer->getCustomer()->setFirstPurchase(this->dp_first_purchase->Value);
-		//get all the content of the datagridview and put it in the customer address dataset
+		//create dataset and get datagridview value
+		DataSet^ ds = gcnew DataSet();
+		DataTable^ dt = gcnew DataTable();
+		dt->TableName = "CustomerShippingAddress";
+		dt->Columns->Add("Address");
+		dt->Columns->Add("Address2");
+		dt->Columns->Add("ZipCode");
+		dt->Columns->Add("City");
+		dt->Columns->Add("Country");
 		for (int i = 0; i < dgv_shipping_address->Rows->Count; i++) {
-			gpCustomer->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[1] = dgv_shipping_address->Rows[i]->Cells[0]->Value;
-			gpCustomer->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[2] = dgv_shipping_address->Rows[i]->Cells[1]->Value;
-			gpCustomer->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[3] = dgv_shipping_address->Rows[i]->Cells[2]->Value;
-			gpCustomer->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[5] = dgv_shipping_address->Rows[i]->Cells[3]->Value;
-			gpCustomer->getShippingAddress()->Tables["CustomerShippingAddress"]->Rows[i]->ItemArray[7] = dgv_shipping_address->Rows[i]->Cells[4]->Value;
+			DataRow^ dr = dt->NewRow();
+			dr->ItemArray = gcnew array<Object^> { dgv_shipping_address->Rows[i]->Cells[0]->Value, dgv_shipping_address->Rows[i]->Cells[1]->Value, dgv_shipping_address->Rows[i]->Cells[2]->Value, dgv_shipping_address->Rows[i]->Cells[3]->Value, dgv_shipping_address->Rows[i]->Cells[4]->Value };
+			dt->Rows->Add(dr);
 		}
+		ds->Tables->Add(dt);
+		gpCustomer->setShippingAddress(ds);
+		//create dataset and get datagridview value
+		DataSet^ ds2 = gcnew DataSet();
+		DataTable^ dt2 = gcnew DataTable();
+		dt2->TableName = "CustomerBillingAddress";
+		dt2->Columns->Add("Address");
+		dt2->Columns->Add("Address2");
+		dt2->Columns->Add("ZipCode");
+		dt2->Columns->Add("City");
+		dt2->Columns->Add("Country");
 		for (int i = 0; i < dgv_billing_address->Rows->Count; i++) {
-			gpCustomer->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[1] = dgv_billing_address->Rows[i]->Cells[0]->Value;
-			gpCustomer->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[2] = dgv_billing_address->Rows[i]->Cells[1]->Value;
-			gpCustomer->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[3] = dgv_billing_address->Rows[i]->Cells[2]->Value;
-			gpCustomer->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[5] = dgv_billing_address->Rows[i]->Cells[3]->Value;
-			gpCustomer->getBillingAddress()->Tables["CustomerBillingAddress"]->Rows[i]->ItemArray[7] = dgv_billing_address->Rows[i]->Cells[4]->Value;
+			DataRow^ dr = dt2->NewRow();
+			dr->ItemArray = gcnew array<Object^> { dgv_billing_address->Rows[i]->Cells[0]->Value, dgv_billing_address->Rows[i]->Cells[1]->Value, dgv_billing_address->Rows[i]->Cells[2]->Value, dgv_billing_address->Rows[i]->Cells[3]->Value, dgv_billing_address->Rows[i]->Cells[4]->Value };
+			dt2->Rows->Add(dr);
 		}
+		ds2->Tables->Add(dt2);
+		gpCustomer->setBillingAddress(ds2);
 	}
 };
 }
