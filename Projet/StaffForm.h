@@ -80,6 +80,8 @@ namespace Projet {
 	private: GpStaff^ gpStaff = gcnew GpStaff();
 	private: int mode;
 	private: int id;
+	private: bool is_valid = false;
+		
 	private: System::Windows::Forms::Button^ btn_staff_update;
 
 	private: System::Windows::Forms::Button^ btn_staff_delete;
@@ -361,7 +363,32 @@ namespace Projet {
 		}
 	}
 	private: System::Void btn_staff_create_Click(System::Object^ sender, System::EventArgs^ e) {
-		//if one textbox is empty display error
+		this->getTextBoxContent();
+		if (this->is_valid == true) {
+			gpStaff->insertStaff();
+			MessageBox::Show("Le personnel a bien été ajouté", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			delete gpStaff;
+			this->Close();
+		}
+	}
+	private: System::Void btn_staff_update_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->getTextBoxContent();
+		if (MessageBox::Show("Voulez-vous vraiment appliquer les modifications ?", "Modification", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			gpStaff->updateStaff();
+			MessageBox::Show("Le personnel a bien été modifié", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			delete gpStaff;
+			this->Close();
+		}
+	}
+	private: System::Void btn_staff_delete_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (MessageBox::Show("Voulez-vous vraiment supprimer ce personnel ?", "Suppression", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			gpStaff->deleteStaff();
+			MessageBox::Show("Le personnel a bien été supprimé", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			delete gpStaff;
+			this->Close();
+		}
+	}
+	private: void getTextBoxContent() {
 		if (tb_staff_lname->Text == "" || tb_staff_fname->Text == "" || tb_staff_address->Text == "" || tb_staff_postal_code->Text == "" || tb_staff_city->Text == "" || tb_staff_country->Text == "") {
 			MessageBox::Show("Veuillez remplir tous les champs", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
@@ -386,50 +413,26 @@ namespace Projet {
 							MessageBox::Show("Le pays n\'est pas valide", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 						}
 						else {
-							//if all the fields are valid create the staff
-							this->getTextBoxContent();
-							gpStaff->insertStaff();
-							MessageBox::Show("Le personnel a bien été ajouté", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-							delete gpStaff;
-							this->Close();
+							this->is_valid = true;
+							gpStaff->getStaff()->setLastName(this->tb_staff_lname->Text);
+							gpStaff->getStaff()->setFirstName(this->tb_staff_fname->Text);
+							gpStaff->getStaff()->setHiringDate(this->dp_staff_hiring_date->Value);
+							if (this->tb_manager->Text != "") {
+								gpStaff->getStaff()->setIdManager(Convert::ToInt32(this->tb_manager->Text));
+							}
+							else {
+								gpStaff->getStaff()->setIdManager(0);
+							}
+							gpStaff->getAddress()->setAddress(this->tb_staff_address->Text);
+							gpStaff->getAddress()->setAddressO(this->tb_staff_address_o->Text);
+							gpStaff->getAddress()->setPostalCode(this->tb_staff_postal_code->Text);
+							gpStaff->getAddress()->setCity(this->tb_staff_city->Text);
+							gpStaff->getAddress()->setCountry(this->tb_staff_country->Text);
 						}
 					}
 				}
 			}
 		}
-	}
-	private: System::Void btn_staff_update_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (MessageBox::Show("Voulez-vous vraiment appliquer les modifications ?", "Modification", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			this->getTextBoxContent();
-			gpStaff->updateStaff();
-			MessageBox::Show("Le personnel a bien été modifié", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			delete gpStaff;
-			this->Close();
-		}
-	}
-	private: System::Void btn_staff_delete_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (MessageBox::Show("Voulez-vous vraiment supprimer ce personnel ?", "Suppression", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			gpStaff->deleteStaff();
-			MessageBox::Show("Le personnel a bien été supprimé", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			delete gpStaff;
-			this->Close();
-		}
-	}
-	private: void getTextBoxContent() {
-		gpStaff->getStaff()->setLastName(this->tb_staff_lname->Text);
-		gpStaff->getStaff()->setFirstName(this->tb_staff_fname->Text);
-		gpStaff->getStaff()->setHiringDate(this->dp_staff_hiring_date->Value);
-		if (this->tb_manager->Text != "") {
-			gpStaff->getStaff()->setIdManager(Convert::ToInt32(this->tb_manager->Text));
-		}
-		else {
-			gpStaff->getStaff()->setIdManager(0);
-		}
-		gpStaff->getAddress()->setAddress(this->tb_staff_address->Text);
-		gpStaff->getAddress()->setAddressO(this->tb_staff_address_o->Text);
-		gpStaff->getAddress()->setPostalCode(this->tb_staff_postal_code->Text);
-		gpStaff->getAddress()->setCity(this->tb_staff_city->Text);
-		gpStaff->getAddress()->setCountry(this->tb_staff_country->Text);
 	}
 };
 }

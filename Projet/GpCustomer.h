@@ -11,6 +11,8 @@ private:
 	DataSet^ billing_address;
 	DataSet^ shipping_address;
 	DatabaseConnection^ db;
+	array<int>^ id_billing_address;
+	array<int>^ id_shipping_address;
 public:
 	GpCustomer();
 	~GpCustomer();
@@ -24,8 +26,7 @@ public:
 	DatabaseConnection^ getDb();
 	void selectCustomer(int);
 	void insertCustomer();
-	//void updateCustomer();
-	//void deleteCustomer();
+	void updateCustomer();
+	void deleteCustomer();
 	DataSet^ customerPreview(int, String^, String^);
-	void addValueDataSet(DataSet^, int, String^, String^, String^);
 };
