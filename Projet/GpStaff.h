@@ -14,10 +14,10 @@ public:
 	GpStaff();
 	~GpStaff();
 	void setStaff(Staff^);
-	Staff^ getStaff();
 	void setAddress(Address^);
-	Address^ getAddress();
 	void setDb(DatabaseConnection^);
+	Staff^ getStaff();
+	Address^ getAddress();
 	DatabaseConnection^ getDb();
 	void selectStaff(int);
 	void insertStaff();

@@ -20,16 +20,16 @@ void GpStaff::setAddress(Address^ address) {
 	this->address = address;
 }
 
+void GpStaff::setDb(DatabaseConnection^ db) {
+	this->db = db;
+}
+
 Staff^ GpStaff::getStaff() {
 	return this->staff;
 }
 
 Address^ GpStaff::getAddress() {
 	return this->address;
-}
-
-void GpStaff::setDb(DatabaseConnection^ db) {
-	this->db = db;
 }
 
 DatabaseConnection^ GpStaff::getDb() {
@@ -95,16 +95,16 @@ DataSet^ GpStaff::staffPreview(int id, String^ last_name, String^ first_name) {
 	DataSet^ data;
 	String^ first_part_query = "SELECT id_staff AS Identifiant, last_name AS Nom, first_name AS Prénom, hiring_date AS Date_embauche, id_manager AS Manager FROM staff WHERE ";
 	if (id > 0) {
-		data = this->getDb()->executeQuerySelect(first_part_query + "id_staff = " + id, "StaffPreview");
+		data = this->getDb()->executeQuerySelect(first_part_query + "id_staff = " + id, "Preview");
 	}
 	else if (last_name != "" && first_name != "") {
-		data = this->getDb()->executeQuerySelect(first_part_query + "last_name LIKE '" + last_name + "%' AND first_name LIKE '" + first_name + "%'", "StaffPreview");
+		data = this->getDb()->executeQuerySelect(first_part_query + "last_name LIKE '" + last_name + "%' AND first_name LIKE '" + first_name + "%'", "Preview");
 	}
 	else if (last_name != "") {
-		data = this->getDb()->executeQuerySelect(first_part_query + "last_name LIKE '" + last_name + "%'", "StaffPreview");
+		data = this->getDb()->executeQuerySelect(first_part_query + "last_name LIKE '" + last_name + "%'", "Preview");
 	}
 	else if (first_name != "") {
-		data = this->getDb()->executeQuerySelect(first_part_query + "first_name LIKE '" + first_name + "%'", "StaffPreview");
+		data = this->getDb()->executeQuerySelect(first_part_query + "first_name LIKE '" + first_name + "%'", "Preview");
 	}
 	else {
 		return data;

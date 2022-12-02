@@ -1,5 +1,4 @@
 #pragma once
-#include "DatabaseConnection.h"
 #include "GpStaff.h"
 
 namespace Projet {
@@ -256,7 +255,7 @@ namespace Projet {
 			this->dp_staff_hiring_date->CustomFormat = L"d MMMM yyyy";
 			this->dp_staff_hiring_date->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->dp_staff_hiring_date->Location = System::Drawing::Point(24, 89);
-			this->dp_staff_hiring_date->MaxDate = System::DateTime(2050, 12, 31, 0, 0, 0, 0);
+			this->dp_staff_hiring_date->MaxDate = System::DateTime::Today;
 			this->dp_staff_hiring_date->MinDate = System::DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this->dp_staff_hiring_date->Name = L"dp_staff_hiring_date";
 			this->dp_staff_hiring_date->Size = System::Drawing::Size(162, 20);
@@ -373,17 +372,17 @@ namespace Projet {
 			}
 			else {
 				//if the postal code is not valid display error
-				if (!Regex::IsMatch(tb_staff_postal_code->Text, "^[0-9]{5}$")) {
+				if (!Regex::IsMatch(tb_staff_postal_code->Text, "^[0-9]{4,10}$")) {
 					MessageBox::Show("Le code postal n\'est pas valide", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
 				else {
 					//if the city is not valid display error
-					if (!Regex::IsMatch(tb_staff_city->Text, "^[a-zA-Z]+$")) {
+					if (!Regex::IsMatch(tb_staff_city->Text, "^[a-zA-Zйифопла]+$")) {
 						MessageBox::Show("La ville n\'est pas valide", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 					}
 					else {
 						//if the country is not valid display error
-						if (!Regex::IsMatch(tb_staff_country->Text, "^[a-zA-Z]+$")) {
+						if (!Regex::IsMatch(tb_staff_country->Text, "^[a-zA-Zйифопла]+$")) {
 							MessageBox::Show("Le pays n\'est pas valide", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 						}
 						else {
@@ -416,21 +415,21 @@ namespace Projet {
 			this->Close();
 		}
 	}
-	void getTextBoxContent() {
-		gpStaff->getStaff()->setLastName(tb_staff_lname->Text);
-		gpStaff->getStaff()->setFirstName(tb_staff_fname->Text);
-		gpStaff->getStaff()->setHiringDate(dp_staff_hiring_date->Value);
-		if (tb_manager->Text != "") {
-			gpStaff->getStaff()->setIdManager(Convert::ToInt32(tb_manager->Text));
+	private: void getTextBoxContent() {
+		gpStaff->getStaff()->setLastName(this->tb_staff_lname->Text);
+		gpStaff->getStaff()->setFirstName(this->tb_staff_fname->Text);
+		gpStaff->getStaff()->setHiringDate(this->dp_staff_hiring_date->Value);
+		if (this->tb_manager->Text != "") {
+			gpStaff->getStaff()->setIdManager(Convert::ToInt32(this->tb_manager->Text));
 		}
 		else {
 			gpStaff->getStaff()->setIdManager(0);
 		}
-		gpStaff->getAddress()->setAddress(tb_staff_address->Text);
-		gpStaff->getAddress()->setAddressO(tb_staff_address_o->Text);
-		gpStaff->getAddress()->setPostalCode(tb_staff_postal_code->Text);
-		gpStaff->getAddress()->setCity(tb_staff_city->Text);
-		gpStaff->getAddress()->setCountry(tb_staff_country->Text);
+		gpStaff->getAddress()->setAddress(this->tb_staff_address->Text);
+		gpStaff->getAddress()->setAddressO(this->tb_staff_address_o->Text);
+		gpStaff->getAddress()->setPostalCode(this->tb_staff_postal_code->Text);
+		gpStaff->getAddress()->setCity(this->tb_staff_city->Text);
+		gpStaff->getAddress()->setCountry(this->tb_staff_country->Text);
 	}
 };
 }
