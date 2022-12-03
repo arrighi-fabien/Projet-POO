@@ -6,6 +6,7 @@
 #include "GpCustomer.h"
 #include "ItemForm.h"
 #include "GpItem.h"
+#include "OrderForm.h"
 #include "GpStat.h"
 
 namespace Projet {
@@ -111,11 +112,15 @@ namespace Projet {
 	private: System::Windows::Forms::TextBox^ textBox11;
 	private: System::Windows::Forms::Button^ btn_item_creation;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ btn_order_create;
+
 	private: System::Windows::Forms::Label^ label13;
 	private: System::Windows::Forms::TextBox^ textBox12;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::TextBox^ textBox13;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::TextBox^ tb_order_customer;
+
 
 
 
@@ -159,8 +164,10 @@ namespace Projet {
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->btn_item_creation = (gcnew System::Windows::Forms::Button());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->tb_order_customer = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->btn_order_create = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->label14 = (gcnew System::Windows::Forms::Label());
@@ -469,8 +476,10 @@ namespace Projet {
 			// 
 			// tabPage4
 			// 
+			this->tabPage4->Controls->Add(this->label15);
+			this->tabPage4->Controls->Add(this->tb_order_customer);
 			this->tabPage4->Controls->Add(this->button1);
-			this->tabPage4->Controls->Add(this->button2);
+			this->tabPage4->Controls->Add(this->btn_order_create);
 			this->tabPage4->Controls->Add(this->label13);
 			this->tabPage4->Controls->Add(this->textBox12);
 			this->tabPage4->Controls->Add(this->label14);
@@ -484,6 +493,23 @@ namespace Projet {
 			this->tabPage4->Text = L"Commandes";
 			this->tabPage4->UseVisualStyleBackColor = true;
 			// 
+			// label15
+			// 
+			this->label15->Location = System::Drawing::Point(357, 22);
+			this->label15->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(98, 16);
+			this->label15->TabIndex = 36;
+			this->label15->Text = L"Identifiant client";
+			// 
+			// tb_order_customer
+			// 
+			this->tb_order_customer->Location = System::Drawing::Point(359, 40);
+			this->tb_order_customer->Margin = System::Windows::Forms::Padding(2);
+			this->tb_order_customer->Name = L"tb_order_customer";
+			this->tb_order_customer->Size = System::Drawing::Size(169, 20);
+			this->tb_order_customer->TabIndex = 35;
+			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(261, 67);
@@ -494,15 +520,16 @@ namespace Projet {
 			this->button1->Text = L"Recherche";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// btn_order_create
 			// 
-			this->button2->Location = System::Drawing::Point(359, 64);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(169, 24);
-			this->button2->TabIndex = 33;
-			this->button2->Text = L"Créer une nouvelle commande";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btn_order_create->Location = System::Drawing::Point(359, 64);
+			this->btn_order_create->Margin = System::Windows::Forms::Padding(2);
+			this->btn_order_create->Name = L"btn_order_create";
+			this->btn_order_create->Size = System::Drawing::Size(169, 24);
+			this->btn_order_create->TabIndex = 33;
+			this->btn_order_create->Text = L"Créer une nouvelle commande";
+			this->btn_order_create->UseVisualStyleBackColor = true;
+			this->btn_order_create->Click += gcnew System::EventHandler(this, &MyForm::btn_order_create_Click);
 			// 
 			// label13
 			// 
@@ -832,6 +859,19 @@ namespace Projet {
 		}
 		this->btn_search();
 	}
+	//
+	// Order part
+	//
+	private: System::Void btn_order_create_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->tb_order_customer->Text != "") {
+			OrderForm^ orderForm = gcnew OrderForm(1, Convert::ToInt32(this->tb_order_customer->Text));
+			orderForm->ShowDialog();
+		}
+		else {
+			MessageBox::Show("Veuillez entrer un id de client", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+		
 	//
 	// Stat part
 	//

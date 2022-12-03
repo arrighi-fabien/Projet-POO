@@ -134,6 +134,7 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="CustomerForm.cpp" />
     <ClCompile Include="ItemForm.cpp" />
+    <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="OrderContain.cpp" />
     <ClCompile Include="Orders.cpp" />
     <ClCompile Include="Payment.cpp" />
@@ -159,6 +160,9 @@
     <ClInclude Include="ItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="OrderForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="OrderContain.h" />
     <ClInclude Include="Orders.h" />
     <ClInclude Include="Payment.h" />
@@ -176,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForm.resx">
+      <DependentUpon>OrderForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.h</DependentUpon>
