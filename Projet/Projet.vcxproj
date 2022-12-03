@@ -128,11 +128,15 @@
     <ClCompile Include="GpCustomer.cpp" />
     <ClCompile Include="GpItem.cpp" />
     <ClCompile Include="GpStaff.cpp" />
+    <ClCompile Include="GpStat.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemPrice.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="CustomerForm.cpp" />
     <ClCompile Include="ItemForm.cpp" />
+    <ClCompile Include="OrderContain.cpp" />
+    <ClCompile Include="Orders.cpp" />
+    <ClCompile Include="Payment.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="StaffForm.cpp" />
   </ItemGroup>
@@ -143,6 +147,7 @@
     <ClInclude Include="GpCustomer.h" />
     <ClInclude Include="GpItem.h" />
     <ClInclude Include="GpStaff.h" />
+    <ClInclude Include="GpStat.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemPrice.h" />
     <ClInclude Include="MyForm.h">
@@ -154,6 +159,9 @@
     <ClInclude Include="ItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="OrderContain.h" />
+    <ClInclude Include="Orders.h" />
+    <ClInclude Include="Payment.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="StaffForm.h">
       <FileType>CppForm</FileType>

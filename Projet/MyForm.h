@@ -6,6 +6,7 @@
 #include "GpCustomer.h"
 #include "ItemForm.h"
 #include "GpItem.h"
+#include "GpStat.h"
 
 namespace Projet {
 
@@ -72,8 +73,10 @@ namespace Projet {
 
 	private: System::Windows::Forms::Button^ button11;
 	private: System::Windows::Forms::Button^ button10;
-	private: System::Windows::Forms::Button^ button9;
-	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::Button^ btn_stat_commercial_value;
+
+	private: System::Windows::Forms::Button^ btn_stat_restocking;
+
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
@@ -97,6 +100,7 @@ namespace Projet {
 	private: GpStaff^ gpStaff = gcnew GpStaff();
 	private: GpCustomer^ gpCustomer = gcnew GpCustomer();
 	private: GpItem^ gpItem = gcnew GpItem();
+	private: GpStat^ gpStat = gcnew GpStat();
 	private: int page = 0;
 		
 	private: System::Windows::Forms::Button^ btn_item_search;
@@ -155,6 +159,12 @@ namespace Projet {
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->btn_item_creation = (gcnew System::Windows::Forms::Button());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
@@ -171,16 +181,10 @@ namespace Projet {
 			this->button13 = (gcnew System::Windows::Forms::Button());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
-			this->button9 = (gcnew System::Windows::Forms::Button());
-			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->btn_stat_commercial_value = (gcnew System::Windows::Forms::Button());
+			this->btn_stat_restocking = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
@@ -480,6 +484,60 @@ namespace Projet {
 			this->tabPage4->Text = L"Commandes";
 			this->tabPage4->UseVisualStyleBackColor = true;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(261, 67);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(68, 19);
+			this->button1->TabIndex = 34;
+			this->button1->Text = L"Recherche";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(359, 64);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(169, 24);
+			this->button2->TabIndex = 33;
+			this->button2->Text = L"Créer une nouvelle commande";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// label13
+			// 
+			this->label13->Location = System::Drawing::Point(8, 50);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(68, 16);
+			this->label13->TabIndex = 32;
+			this->label13->Text = L"Nom client";
+			// 
+			// textBox12
+			// 
+			this->textBox12->Location = System::Drawing::Point(10, 68);
+			this->textBox12->Margin = System::Windows::Forms::Padding(2);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(200, 20);
+			this->textBox12->TabIndex = 31;
+			// 
+			// label14
+			// 
+			this->label14->Location = System::Drawing::Point(8, 10);
+			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(101, 16);
+			this->label14->TabIndex = 30;
+			this->label14->Text = L"Référence commande";
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(10, 28);
+			this->textBox13->Margin = System::Windows::Forms::Padding(2);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(200, 20);
+			this->textBox13->TabIndex = 29;
+			// 
 			// tabPage5
 			// 
 			this->tabPage5->Controls->Add(this->button7);
@@ -534,8 +592,8 @@ namespace Projet {
 			this->tabPage6->Controls->Add(this->button13);
 			this->tabPage6->Controls->Add(this->button11);
 			this->tabPage6->Controls->Add(this->button10);
-			this->tabPage6->Controls->Add(this->button9);
-			this->tabPage6->Controls->Add(this->button8);
+			this->tabPage6->Controls->Add(this->btn_stat_commercial_value);
+			this->tabPage6->Controls->Add(this->btn_stat_restocking);
 			this->tabPage6->Controls->Add(this->button6);
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
 			this->tabPage6->Margin = System::Windows::Forms::Padding(2);
@@ -604,7 +662,7 @@ namespace Projet {
 			// 
 			// button15
 			// 
-			this->button15->Location = System::Drawing::Point(385, 30);
+			this->button15->Location = System::Drawing::Point(326, 12);
 			this->button15->Margin = System::Windows::Forms::Padding(2);
 			this->button15->Name = L"button15";
 			this->button15->Size = System::Drawing::Size(84, 37);
@@ -634,7 +692,7 @@ namespace Projet {
 			// 
 			// button11
 			// 
-			this->button11->Location = System::Drawing::Point(285, 22);
+			this->button11->Location = System::Drawing::Point(251, 14);
 			this->button11->Margin = System::Windows::Forms::Padding(2);
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(84, 37);
@@ -644,7 +702,7 @@ namespace Projet {
 			// 
 			// button10
 			// 
-			this->button10->Location = System::Drawing::Point(285, 79);
+			this->button10->Location = System::Drawing::Point(236, 49);
 			this->button10->Margin = System::Windows::Forms::Padding(2);
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(80, 44);
@@ -652,29 +710,31 @@ namespace Projet {
 			this->button10->Text = L"Valeur achat stock";
 			this->button10->UseVisualStyleBackColor = true;
 			// 
-			// button9
+			// btn_stat_commercial_value
 			// 
-			this->button9->Location = System::Drawing::Point(369, 78);
-			this->button9->Margin = System::Windows::Forms::Padding(2);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(77, 51);
-			this->button9->TabIndex = 2;
-			this->button9->Text = L"Valeur commerciale stock";
-			this->button9->UseVisualStyleBackColor = true;
+			this->btn_stat_commercial_value->Location = System::Drawing::Point(369, 84);
+			this->btn_stat_commercial_value->Margin = System::Windows::Forms::Padding(2);
+			this->btn_stat_commercial_value->Name = L"btn_stat_commercial_value";
+			this->btn_stat_commercial_value->Size = System::Drawing::Size(77, 51);
+			this->btn_stat_commercial_value->TabIndex = 2;
+			this->btn_stat_commercial_value->Text = L"Valeur commerciale stock";
+			this->btn_stat_commercial_value->UseVisualStyleBackColor = true;
+			this->btn_stat_commercial_value->Click += gcnew System::EventHandler(this, &MyForm::btn_stat_commercial_value_Click);
 			// 
-			// button8
+			// btn_stat_restocking
 			// 
-			this->button8->Location = System::Drawing::Point(437, 77);
-			this->button8->Margin = System::Windows::Forms::Padding(2);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(116, 52);
-			this->button8->TabIndex = 1;
-			this->button8->Text = L"Produits sous le seuil de réapprovisionnement";
-			this->button8->UseVisualStyleBackColor = true;
+			this->btn_stat_restocking->Location = System::Drawing::Point(450, 84);
+			this->btn_stat_restocking->Margin = System::Windows::Forms::Padding(2);
+			this->btn_stat_restocking->Name = L"btn_stat_restocking";
+			this->btn_stat_restocking->Size = System::Drawing::Size(116, 52);
+			this->btn_stat_restocking->TabIndex = 1;
+			this->btn_stat_restocking->Text = L"Produits sous le seuil de réapprovisionnement";
+			this->btn_stat_restocking->UseVisualStyleBackColor = true;
+			this->btn_stat_restocking->Click += gcnew System::EventHandler(this, &MyForm::btn_stat_restocking_Click);
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(473, 20);
+			this->button6->Location = System::Drawing::Point(394, 4);
 			this->button6->Margin = System::Windows::Forms::Padding(2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(80, 41);
@@ -693,60 +753,6 @@ namespace Projet {
 			this->dataGridView2->Size = System::Drawing::Size(566, 144);
 			this->dataGridView2->TabIndex = 14;
 			this->dataGridView2->CellContentDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView2_CellContentDoubleClick);
-			// 
-			// label13
-			// 
-			this->label13->Location = System::Drawing::Point(8, 50);
-			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(68, 16);
-			this->label13->TabIndex = 32;
-			this->label13->Text = L"Nom client";
-			// 
-			// textBox12
-			// 
-			this->textBox12->Location = System::Drawing::Point(10, 68);
-			this->textBox12->Margin = System::Windows::Forms::Padding(2);
-			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(200, 20);
-			this->textBox12->TabIndex = 31;
-			// 
-			// label14
-			// 
-			this->label14->Location = System::Drawing::Point(8, 10);
-			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(101, 16);
-			this->label14->TabIndex = 30;
-			this->label14->Text = L"Référence commande";
-			// 
-			// textBox13
-			// 
-			this->textBox13->Location = System::Drawing::Point(10, 28);
-			this->textBox13->Margin = System::Windows::Forms::Padding(2);
-			this->textBox13->Name = L"textBox13";
-			this->textBox13->Size = System::Drawing::Size(200, 20);
-			this->textBox13->TabIndex = 29;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(261, 67);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(68, 19);
-			this->button1->TabIndex = 34;
-			this->button1->Text = L"Recherche";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(359, 64);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(169, 24);
-			this->button2->TabIndex = 33;
-			this->button2->Text = L"Créer une nouvelle commande";
-			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
@@ -826,7 +832,26 @@ namespace Projet {
 		}
 		this->btn_search();
 	}
-
+	//
+	// Stat part
+	//
+	private: System::Void btn_stat_restocking_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->dataGridView2->DataSource = gpStat->getItemUnderRestockingLevel();
+		this->dataGridView2->DataMember = "Stat";
+		for (int i = 0; i < this->dataGridView2->Columns->Count; i++) {
+			this->dataGridView2->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
+		}
+	}
+	private: System::Void btn_stat_commercial_value_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ commercial_value = gpStat->getStockCommercialValue();
+		DataTable^ dt = gcnew DataTable();
+		dt->Columns->Add("Commercial value");
+		dt->Rows->Add(commercial_value);
+		this->dataGridView2->DataSource = dt;
+		for (int i = 0; i < this->dataGridView2->Columns->Count; i++) {
+			this->dataGridView2->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
+		}
+	}
 	//
 	// All part
 	//

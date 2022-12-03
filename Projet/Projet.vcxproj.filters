@@ -60,6 +60,18 @@
     <ClCompile Include="ItemForm.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Orders.cpp">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClCompile>
+    <ClCompile Include="Payment.cpp">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderContain.cpp">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClCompile>
+    <ClCompile Include="GpStat.cpp">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -100,6 +112,18 @@
     </ClInclude>
     <ClInclude Include="ItemForm.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Orders.h">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClInclude>
+    <ClInclude Include="Payment.h">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderContain.h">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClInclude>
+    <ClInclude Include="GpStat.h">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
