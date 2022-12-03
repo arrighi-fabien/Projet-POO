@@ -1,7 +1,14 @@
 #include "Address.h"
 
 Address::Address() {
-
+	this->id_address = 0;
+	this->address = "";
+	this->address_o = "";
+	this->postal_code = "";
+	this->id_city = 0;
+	this->city = "";
+	this->id_country = 0;
+	this->country = "";
 }
 
 void Address::setIdAddress(int id_address) {

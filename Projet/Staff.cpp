@@ -1,7 +1,6 @@
 #include "Staff.h"
 
 Staff::Staff() {
-	//set all value to null
 	this->id_staff = 0;
 	this->first_name = "";
 	this->last_name = "";

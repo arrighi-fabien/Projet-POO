@@ -106,6 +106,12 @@ namespace Projet {
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::TextBox^ textBox11;
 	private: System::Windows::Forms::Button^ btn_item_creation;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::TextBox^ textBox12;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::TextBox^ textBox13;
 
 
 
@@ -169,10 +175,17 @@ namespace Projet {
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->tabPage3->SuspendLayout();
+			this->tabPage4->SuspendLayout();
 			this->tabPage5->SuspendLayout();
 			this->tabPage6->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -452,6 +465,12 @@ namespace Projet {
 			// 
 			// tabPage4
 			// 
+			this->tabPage4->Controls->Add(this->button1);
+			this->tabPage4->Controls->Add(this->button2);
+			this->tabPage4->Controls->Add(this->label13);
+			this->tabPage4->Controls->Add(this->textBox12);
+			this->tabPage4->Controls->Add(this->label14);
+			this->tabPage4->Controls->Add(this->textBox13);
 			this->tabPage4->Location = System::Drawing::Point(4, 22);
 			this->tabPage4->Margin = System::Windows::Forms::Padding(2);
 			this->tabPage4->Name = L"tabPage4";
@@ -675,6 +694,60 @@ namespace Projet {
 			this->dataGridView2->TabIndex = 14;
 			this->dataGridView2->CellContentDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView2_CellContentDoubleClick);
 			// 
+			// label13
+			// 
+			this->label13->Location = System::Drawing::Point(8, 50);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(68, 16);
+			this->label13->TabIndex = 32;
+			this->label13->Text = L"Nom client";
+			// 
+			// textBox12
+			// 
+			this->textBox12->Location = System::Drawing::Point(10, 68);
+			this->textBox12->Margin = System::Windows::Forms::Padding(2);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(200, 20);
+			this->textBox12->TabIndex = 31;
+			// 
+			// label14
+			// 
+			this->label14->Location = System::Drawing::Point(8, 10);
+			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(101, 16);
+			this->label14->TabIndex = 30;
+			this->label14->Text = L"Référence commande";
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(10, 28);
+			this->textBox13->Margin = System::Windows::Forms::Padding(2);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(200, 20);
+			this->textBox13->TabIndex = 29;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(261, 67);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(68, 19);
+			this->button1->TabIndex = 34;
+			this->button1->Text = L"Recherche";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(359, 64);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(169, 24);
+			this->button2->TabIndex = 33;
+			this->button2->Text = L"Créer une nouvelle commande";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -695,6 +768,8 @@ namespace Projet {
 			this->tabPage2->PerformLayout();
 			this->tabPage3->ResumeLayout(false);
 			this->tabPage3->PerformLayout();
+			this->tabPage4->ResumeLayout(false);
+			this->tabPage4->PerformLayout();
 			this->tabPage5->ResumeLayout(false);
 			this->tabPage5->PerformLayout();
 			this->tabPage6->ResumeLayout(false);

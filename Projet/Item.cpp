@@ -1,7 +1,13 @@
 #include "Item.h"
 
 Item::Item() {
-	
+	this->id_item = 0;
+	this->item_reference = "";
+	this->item_name = "";
+	this->in_stock = 0;
+	this->restocking_level = 0;
+	this->id_item_category = 0;
+	this->item_category_name = "";
 }
 
 void Item::setIdItem(int id_item) {

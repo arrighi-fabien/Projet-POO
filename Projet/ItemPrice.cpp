@@ -1,7 +1,11 @@
 #include "ItemPrice.h"
 
 ItemPrice::ItemPrice() {
-	
+	this->id_item_price = 0;
+	this->vat_rate = 0.0;
+	this->item_price_et = 0.0;
+	this->date_change = DateTime::Now;
+	this->id_item = 0;
 }
 
 void ItemPrice::setIdItemPrice(int id_item_price) {
