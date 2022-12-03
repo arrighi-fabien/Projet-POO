@@ -126,9 +126,13 @@
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="DatabaseConnection.cpp" />
     <ClCompile Include="GpCustomer.cpp" />
+    <ClCompile Include="GpItem.cpp" />
     <ClCompile Include="GpStaff.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemPrice.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="CustomerForm.cpp" />
+    <ClCompile Include="ItemForm.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="StaffForm.cpp" />
   </ItemGroup>
@@ -137,11 +141,17 @@
     <ClInclude Include="Customer.h" />
     <ClInclude Include="DatabaseConnection.h" />
     <ClInclude Include="GpCustomer.h" />
+    <ClInclude Include="GpItem.h" />
     <ClInclude Include="GpStaff.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemPrice.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CustomerForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Staff.h" />
@@ -152,6 +162,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemForm.resx">
+      <DependentUpon>ItemForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>

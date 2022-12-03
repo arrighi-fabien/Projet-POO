@@ -373,7 +373,7 @@ namespace Projet {
 	}
 	private: System::Void btn_staff_update_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->getTextBoxContent();
-		if (MessageBox::Show("Voulez-vous vraiment appliquer les modifications ?", "Modification", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		if (this->is_valid == true && MessageBox::Show("Voulez-vous vraiment appliquer les modifications ?", "Modification", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 			gpStaff->updateStaff();
 			MessageBox::Show("Le personnel a bien été modifié", "Succès", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			delete gpStaff;

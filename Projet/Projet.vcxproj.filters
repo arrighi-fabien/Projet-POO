@@ -48,6 +48,18 @@
     <ClCompile Include="CustomerForm.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemPrice.cpp">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClCompile>
+    <ClCompile Include="GpItem.cpp">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemForm.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -75,6 +87,18 @@
       <Filter>Fichiers de ressources\Classe de regroupement</Filter>
     </ClInclude>
     <ClInclude Include="CustomerForm.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemPrice.h">
+      <Filter>Fichiers de ressources\Classe de mappage</Filter>
+    </ClInclude>
+    <ClInclude Include="GpItem.h">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemForm.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
