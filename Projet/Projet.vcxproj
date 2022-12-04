@@ -127,6 +127,7 @@
     <ClCompile Include="DatabaseConnection.cpp" />
     <ClCompile Include="GpCustomer.cpp" />
     <ClCompile Include="GpItem.cpp" />
+    <ClCompile Include="GpOrder.cpp" />
     <ClCompile Include="GpStaff.cpp" />
     <ClCompile Include="GpStat.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="DatabaseConnection.h" />
     <ClInclude Include="GpCustomer.h" />
     <ClInclude Include="GpItem.h" />
+    <ClInclude Include="GpOrder.h" />
     <ClInclude Include="GpStaff.h" />
     <ClInclude Include="GpStat.h" />
     <ClInclude Include="Item.h" />

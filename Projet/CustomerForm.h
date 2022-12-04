@@ -169,7 +169,7 @@ namespace Projet {
 			// 
 			this->dgv_billing_address->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_billing_address->Location = System::Drawing::Point(290, 206);
-			this->dgv_billing_address->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgv_billing_address->Margin = System::Windows::Forms::Padding(2);
 			this->dgv_billing_address->Name = L"dgv_billing_address";
 			this->dgv_billing_address->RowHeadersWidth = 51;
 			this->dgv_billing_address->Size = System::Drawing::Size(657, 122);
@@ -216,7 +216,7 @@ namespace Projet {
 			// btn_customer_delete
 			// 
 			this->btn_customer_delete->Location = System::Drawing::Point(521, 362);
-			this->btn_customer_delete->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_customer_delete->Margin = System::Windows::Forms::Padding(2);
 			this->btn_customer_delete->Name = L"btn_customer_delete";
 			this->btn_customer_delete->Size = System::Drawing::Size(75, 23);
 			this->btn_customer_delete->TabIndex = 23;
@@ -227,7 +227,7 @@ namespace Projet {
 			// btn_customer_update
 			// 
 			this->btn_customer_update->Location = System::Drawing::Point(360, 362);
-			this->btn_customer_update->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_customer_update->Margin = System::Windows::Forms::Padding(2);
 			this->btn_customer_update->Name = L"btn_customer_update";
 			this->btn_customer_update->Size = System::Drawing::Size(75, 23);
 			this->btn_customer_update->TabIndex = 22;
@@ -275,7 +275,7 @@ namespace Projet {
 			this->Controls->Add(this->tb_customer_fname);
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"CustomerForm";

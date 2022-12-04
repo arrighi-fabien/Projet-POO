@@ -86,7 +86,7 @@ DataSet^ GpItem::priceHistory() {
 
 DataSet^ GpItem::itemPreview(String^ item_reference, String^ item_name) {
 	DataSet^ data;
-	String^ first_part_query = "SELECT TOP 1 item_reference AS Référence, item_name AS Désignation, item_price_et AS Prix_HT, vat_rate AS Taux_TVA FROM item JOIN item_price ON item.id_item = item_price.id_item WHERE ";
+	String^ first_part_query = "SELECT TOP 1 item.id_item, id_item_price, item_reference AS Référence, item_name AS Désignation, item_price_et AS Prix_HT, vat_rate AS Taux_TVA, in_stock AS Stock FROM item JOIN item_price ON item.id_item = item_price.id_item WHERE ";
 	String^ end_part_query = " ORDER BY date_change DESC";
 	if (item_reference != "") {
 		data = this->getDb()->executeQuerySelect(first_part_query + "item_reference LIKE '" + item_reference + "%'" + end_part_query, "Preview");

@@ -922,6 +922,10 @@ namespace Projet {
 			break;
 		}
 		this->dataGridView2->DataMember = "Preview";
+		if (this->page == 3) {
+			this->dataGridView2->Columns[0]->Visible = false;
+			this->dataGridView2->Columns[1]->Visible = false;
+		}
 		//auto resize column of datagridview to take all place
 		for (int i = 0; i < this->dataGridView2->Columns->Count; i++) {
 			this->dataGridView2->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
@@ -937,7 +941,7 @@ namespace Projet {
 			customerForm->ShowDialog();
 		}
 		else if (this->page == 3) {
-			ItemForm^ itemForm = gcnew ItemForm(2, this->dataGridView2->CurrentRow->Cells[0]->Value->ToString());
+			ItemForm^ itemForm = gcnew ItemForm(2, this->dataGridView2->CurrentRow->Cells[2]->Value->ToString());
 			itemForm->ShowDialog();
 		}
 	}

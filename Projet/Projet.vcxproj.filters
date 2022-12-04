@@ -75,6 +75,9 @@
     <ClCompile Include="OrderForm.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="GpOrder.cpp">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="OrderForm.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="GpOrder.h">
+      <Filter>Fichiers de ressources\Classe de regroupement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
