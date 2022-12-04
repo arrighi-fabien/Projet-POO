@@ -6,6 +6,7 @@
 #include "GpCustomer.h"
 #include "ItemForm.h"
 #include "GpItem.h"
+#include "GpOrder.h"
 #include "OrderForm.h"
 #include "GpStat.h"
 
@@ -102,6 +103,7 @@ namespace Projet {
 	private: GpCustomer^ gpCustomer = gcnew GpCustomer();
 	private: GpItem^ gpItem = gcnew GpItem();
 	private: GpStat^ gpStat = gcnew GpStat();
+	private: GpOrder^ gpOrder = gcnew GpOrder();
 	private: int page = 0;
 		
 	private: System::Windows::Forms::Button^ btn_item_search;
@@ -111,7 +113,8 @@ namespace Projet {
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::TextBox^ textBox11;
 	private: System::Windows::Forms::Button^ btn_item_creation;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btn_order_search;
+
 	private: System::Windows::Forms::Button^ btn_order_create;
 
 	private: System::Windows::Forms::Label^ label13;
@@ -166,7 +169,7 @@ namespace Projet {
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->tb_order_customer = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btn_order_search = (gcnew System::Windows::Forms::Button());
 			this->btn_order_create = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
@@ -478,7 +481,7 @@ namespace Projet {
 			// 
 			this->tabPage4->Controls->Add(this->label15);
 			this->tabPage4->Controls->Add(this->tb_order_customer);
-			this->tabPage4->Controls->Add(this->button1);
+			this->tabPage4->Controls->Add(this->btn_order_search);
 			this->tabPage4->Controls->Add(this->btn_order_create);
 			this->tabPage4->Controls->Add(this->label13);
 			this->tabPage4->Controls->Add(this->textBox12);
@@ -510,15 +513,16 @@ namespace Projet {
 			this->tb_order_customer->Size = System::Drawing::Size(169, 20);
 			this->tb_order_customer->TabIndex = 35;
 			// 
-			// button1
+			// btn_order_search
 			// 
-			this->button1->Location = System::Drawing::Point(261, 67);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(68, 19);
-			this->button1->TabIndex = 34;
-			this->button1->Text = L"Recherche";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btn_order_search->Location = System::Drawing::Point(261, 67);
+			this->btn_order_search->Margin = System::Windows::Forms::Padding(2);
+			this->btn_order_search->Name = L"btn_order_search";
+			this->btn_order_search->Size = System::Drawing::Size(68, 19);
+			this->btn_order_search->TabIndex = 34;
+			this->btn_order_search->Text = L"Recherche";
+			this->btn_order_search->UseVisualStyleBackColor = true;
+			this->btn_order_search->Click += gcnew System::EventHandler(this, &MyForm::btn_order_search_Click);
 			// 
 			// btn_order_create
 			// 
@@ -871,7 +875,10 @@ namespace Projet {
 			MessageBox::Show("Veuillez entrer un id de client", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-		
+	private: System::Void btn_order_search_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->page = 4;
+		this->btn_search();
+	}
 	//
 	// Stat part
 	//
@@ -920,9 +927,12 @@ namespace Projet {
 		case 3:
 			this->dataGridView2->DataSource = gpItem->itemPreview(this->textBox11->Text, this->textBox10->Text);
 			break;
+		case 4:
+			this->dataGridView2->DataSource = gpOrder->orderPreview(this->textBox13->Text, this->textBox12->Text);
+			break;
 		}
 		this->dataGridView2->DataMember = "Preview";
-		if (this->page == 3) {
+		if (this->page == 3 || this->page == 4) {
 			this->dataGridView2->Columns[0]->Visible = false;
 			this->dataGridView2->Columns[1]->Visible = false;
 		}
@@ -943,6 +953,10 @@ namespace Projet {
 		else if (this->page == 3) {
 			ItemForm^ itemForm = gcnew ItemForm(2, this->dataGridView2->CurrentRow->Cells[2]->Value->ToString());
 			itemForm->ShowDialog();
+		}
+		else if (this->page == 4) {
+			OrderForm^ orderForm = gcnew OrderForm(2, Convert::ToInt32(this->dataGridView2->CurrentRow->Cells[0]->Value), Convert::ToInt32(this->dataGridView2->CurrentRow->Cells[1]->Value));
+			orderForm->ShowDialog();
 		}
 	}
 };

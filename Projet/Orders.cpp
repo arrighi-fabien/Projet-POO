@@ -7,6 +7,8 @@ Orders::Orders() {
 	this->issue_date = DateTime::Now;
 	this->pay_date = DateTime::Now;
 	this->id_customer = 0;
+	this->id_shipping_address = 0;
+	this->id_billing_address = 0;
 }
 
 void Orders::setIdOrder(int id_order) {
@@ -33,6 +35,14 @@ void Orders::setIdCustomer(int id_customer) {
 	this->id_customer = id_customer;
 }
 
+void Orders::setIdShippingAddress(int id_shipping_address) {
+	this->id_shipping_address = id_shipping_address;
+}
+
+void Orders::setIdBillingAddress(int id_billing_address) {
+	this->id_billing_address = id_billing_address;
+}
+
 int Orders::getIdOrder() {
 	return this->id_order;
 }
@@ -55,4 +65,12 @@ DateTime^ Orders::getPayDate() {
 
 int Orders::getIdCustomer() {
 	return this->id_customer;
+}
+
+int Orders::getIdShippingAddress() {
+	return this->id_shipping_address;
+}
+
+int Orders::getIdBillingAddress() {
+	return this->id_billing_address;
 }

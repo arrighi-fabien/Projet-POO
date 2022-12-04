@@ -26,8 +26,16 @@ namespace Projet {
 			this->id_customer = id_customer;
 			if (this->mode == 1) {
 				this->Text = L"Création d'une commande";
+				this->btn_delete_order->Visible = false;
+			}
+			else if (mode == 2) {
+				this->Text = L"Affichage d'une commande";
 			}
 		}
+		OrderForm(int mode, int id_order, int id_customer) : OrderForm(mode, id_customer) {
+			this->id_order = id_order;
+		}
+		
 
 	protected:
 		/// <summary>
@@ -66,6 +74,7 @@ namespace Projet {
 	private: int id_customer;
 	private: int id_shipping_address;
 	private: int id_billing_address;
+	private: int id_order;
 	private: GpItem^ gpItem = gcnew GpItem();
 	private: GpCustomer^ gpCustomer = gcnew GpCustomer();
 	private: GpOrder^ gpOrder = gcnew GpOrder();
@@ -79,6 +88,7 @@ namespace Projet {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn8;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn9;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn10;
 	private: System::Windows::Forms::TextBox^ tb_customer_id;
 	private: System::Windows::Forms::Button^ btn_valid_order;
 
@@ -93,6 +103,12 @@ namespace Projet {
 	private: System::Windows::Forms::Label^ label15;
 	private: System::Windows::Forms::Label^ label16;
 	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::Button^ btn_delete_order;
+
+
+
+
+
 
 
 
@@ -127,6 +143,7 @@ namespace Projet {
 			this->dataGridViewTextBoxColumn7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->tb_item_ref_search = (gcnew System::Windows::Forms::TextBox());
 			this->tb_item_name_search = (gcnew System::Windows::Forms::TextBox());
@@ -149,6 +166,7 @@ namespace Projet {
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->btn_delete_order = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_shipping_address))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_billing_address))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -210,7 +228,7 @@ namespace Projet {
 			this->dateTimePicker1->CustomFormat = L"d MMMM yyyy";
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->dateTimePicker1->Location = System::Drawing::Point(16, 119);
-			this->dateTimePicker1->MinDate = System::DateTime::Today;
+			this->dateTimePicker1->MinDate = System::DateTime(2022, 12, 4, 0, 0, 0, 0);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->Size = System::Drawing::Size(162, 20);
 			this->dateTimePicker1->TabIndex = 30;
@@ -218,10 +236,11 @@ namespace Projet {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5,
-					this->dataGridViewTextBoxColumn6, this->dataGridViewTextBoxColumn7, this->dataGridViewTextBoxColumn8, this->dataGridViewTextBoxColumn9
+					this->dataGridViewTextBoxColumn6, this->dataGridViewTextBoxColumn7, this->dataGridViewTextBoxColumn8, this->dataGridViewTextBoxColumn9,
+					this->dataGridViewTextBoxColumn10
 			});
 			this->dataGridView1->Location = System::Drawing::Point(714, 35);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -267,12 +286,17 @@ namespace Projet {
 			// dataGridViewTextBoxColumn8
 			// 
 			this->dataGridViewTextBoxColumn8->HeaderText = L"Remise (%)";
-			this->dataGridViewTextBoxColumn8->Name = L"dataGridViewTextBoxColumn7";
+			this->dataGridViewTextBoxColumn8->Name = L"dataGridViewTextBoxColumn8";
 			// 
 			// dataGridViewTextBoxColumn9
 			// 
 			this->dataGridViewTextBoxColumn9->HeaderText = L"En stock";
-			this->dataGridViewTextBoxColumn9->Name = L"dataGridViewTextBoxColumn7";
+			this->dataGridViewTextBoxColumn9->Name = L"dataGridViewTextBoxColumn9";
+			// 
+			// dataGridViewTextBoxColumn10
+			// 
+			this->dataGridViewTextBoxColumn10->HeaderText = L"id_order_contain";
+			this->dataGridViewTextBoxColumn10->Name = L"dataGridViewTextBoxColumn10";
 			// 
 			// label2
 			// 
@@ -383,7 +407,7 @@ namespace Projet {
 			// 
 			this->btn_valid_order->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_valid_order->Location = System::Drawing::Point(1049, 545);
+			this->btn_valid_order->Location = System::Drawing::Point(1120, 519);
 			this->btn_valid_order->Name = L"btn_valid_order";
 			this->btn_valid_order->Size = System::Drawing::Size(182, 65);
 			this->btn_valid_order->TabIndex = 46;
@@ -439,7 +463,7 @@ namespace Projet {
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(710, 590);
+			this->label14->Location = System::Drawing::Point(738, 560);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(265, 20);
 			this->label14->TabIndex = 52;
@@ -450,7 +474,7 @@ namespace Projet {
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(972, 590);
+			this->label15->Location = System::Drawing::Point(1000, 560);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(31, 20);
 			this->label15->TabIndex = 53;
@@ -461,7 +485,7 @@ namespace Projet {
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(969, 551);
+			this->label16->Location = System::Drawing::Point(995, 524);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(31, 20);
 			this->label16->TabIndex = 55;
@@ -472,17 +496,28 @@ namespace Projet {
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(712, 551);
+			this->label17->Location = System::Drawing::Point(738, 524);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(261, 20);
 			this->label17->TabIndex = 54;
 			this->label17->Text = L"Montant total de la commande HT  :";
+			// 
+			// btn_delete_order
+			// 
+			this->btn_delete_order->Location = System::Drawing::Point(1156, 478);
+			this->btn_delete_order->Name = L"btn_delete_order";
+			this->btn_delete_order->Size = System::Drawing::Size(97, 35);
+			this->btn_delete_order->TabIndex = 56;
+			this->btn_delete_order->Text = L"Supprimer la commande";
+			this->btn_delete_order->UseVisualStyleBackColor = true;
+			this->btn_delete_order->Click += gcnew System::EventHandler(this, &OrderForm::btn_delete_order_Click);
 			// 
 			// OrderForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1369, 681);
+			this->Controls->Add(this->btn_delete_order);
 			this->Controls->Add(this->label16);
 			this->Controls->Add(this->label17);
 			this->Controls->Add(this->label15);
@@ -547,6 +582,32 @@ namespace Projet {
 		this->tb_customer_id->Text = Convert::ToString(this->id_customer);
 		this->tb_customer_lname->Text = gpCustomer->getCustomer()->getLastName();
 		this->tb_customer_fname->Text = gpCustomer->getCustomer()->getFirstName();
+		if (this->mode == 2) {
+			gpOrder->selectOrder(this->id_order);
+			this->dateTimePicker1->Value = Convert::ToDateTime(gpOrder->getOrder()->getDeliveryDate());
+			//insert code to fill the datagridview with the order items
+			for (int i = 0; i < gpOrder->getOrderContain()->Tables[0]->Rows->Count; i++) {
+				this->dataGridView1->Rows->Add(gpOrder->getOrderContain()->Tables[0]->Rows[i]->ItemArray);
+			}
+			this->dataGridView1->Columns[0]->Visible = false;
+			this->dataGridView1->Columns[1]->Visible = false;
+			this->dataGridView1->Columns[8]->Visible = false;
+			/*this->dataGridView1->Columns[9]->Visible = false;*/
+			//search if id address in the datagridview1 and get the index
+			for (int i = 0; i < this->dgv_shipping_address->Rows->Count; i++) {
+				if (Convert::ToInt32(this->dgv_shipping_address->Rows[i]->Cells[0]->Value) == gpOrder->getOrder()->getIdShippingAddress()) {
+					this->label8->Text = Convert::ToString(i+1);
+					this->id_shipping_address = Convert::ToInt32(this->dgv_shipping_address->Rows[i]->Cells[0]->Value);
+				}
+			}
+			for (int i = 0; i < this->dgv_billing_address->Rows->Count; i++) {
+				if (Convert::ToInt32(this->dgv_billing_address->Rows[i]->Cells[0]->Value) == gpOrder->getOrder()->getIdBillingAddress()) {
+					this->label9->Text = Convert::ToString(i+1);
+					this->id_billing_address = Convert::ToInt32(this->dgv_billing_address->Rows[i]->Cells[0]->Value);
+				}
+			}
+			this->dataGridView1_CellEndEdit(this, gcnew DataGridViewCellEventArgs(0, 0));
+		}
 	}
 	private: System::Void btn_command_search_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->dataGridView2->Columns->Clear();
@@ -608,7 +669,7 @@ namespace Projet {
 				return;
 			}
 			if (Regex::IsMatch(Convert::ToString(quantity), "^[0-9]{1,10}$") && Regex::IsMatch(Convert::ToString(discount), "^[0-9]{0,3}$")) {
-				total_cart_et += Convert::ToDouble(this->dataGridView1->Rows[i]->Cells[4]->Value) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToDouble(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
+				total_cart_et += Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[4]->Value) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
 			}
 			else {
 				this->dataGridView1->Rows[i]->Cells[6]->Value = 0;
@@ -620,7 +681,7 @@ namespace Projet {
 		total_cart_et = roundf(total_cart_et * 100) / 100;
 		this->label16->Text = Convert::ToString(total_cart_et + " €");
 		for (int i = 0; i < this->dataGridView1->Rows->Count; i++) {
-			total_cart_wt += Convert::ToDouble(this->dataGridView1->Rows[i]->Cells[4]->Value) * (Convert::ToDouble(this->dataGridView1->Rows[i]->Cells[5]->Value) + 1) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToDouble(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
+			total_cart_wt += Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[4]->Value) * (Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[5]->Value) + 1) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
 		}
 		total_cart_wt = roundf(total_cart_wt * 100) / 100;
 		this->label15->Text = Convert::ToString(total_cart_wt + " €");
@@ -666,14 +727,27 @@ namespace Projet {
 		dt->Columns->Add("id_item_price", System::Int32::typeid);
 		dt->Columns->Add("quantity", System::Int32::typeid);
 		dt->Columns->Add("discount", System::Int32::typeid);
+		dt->Columns->Add("id_order_contain", System::Int32::typeid);
 		for (int i = 0; i < this->dataGridView1->Rows->Count - 1; i++) {
-			dt->Rows->Add(Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[0]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[1]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[7]->Value));
+			dt->Rows->Add(Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[0]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[1]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[7]->Value), Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[9]->Value));
 		}
 		ds->Tables->Add(dt);
 		gpOrder->setOrderContain(ds);
-		gpOrder->addOrder(this->id_shipping_address, this->id_billing_address, this->dgv_shipping_address->Rows[Convert::ToInt32(this->label8->Text) - 1]->Cells[5]->Value->ToString());
+		if (this->mode == 1) {
+			gpOrder->addOrder(this->id_shipping_address, this->id_billing_address, this->dgv_shipping_address->Rows[Convert::ToInt32(this->label8->Text) - 1]->Cells[5]->Value->ToString());
+		}
+		else if (this->mode == 2) {
+			gpOrder->updateOrder(this->id_shipping_address, this->id_billing_address);
+		}
 		MessageBox::Show("Commande validée", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		this->Close();
+	}
+	private: System::Void btn_delete_order_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (MessageBox::Show("Voulez-vous vraiment supprimer cette commande ?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			gpOrder->deleteOrder();
+			MessageBox::Show("Commande supprimée", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->Close();
+		}
 	}
 };
 }

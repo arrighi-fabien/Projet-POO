@@ -9,6 +9,8 @@ private:
 	DateTime^ issue_date;
 	DateTime^ pay_date;
 	int id_customer;
+	int id_shipping_address;
+	int id_billing_address;
 public:
 	Orders();
 	void setIdOrder(int);
@@ -17,10 +19,14 @@ public:
 	void setIssueDate(DateTime^);
 	void setPayDate(DateTime^);
 	void setIdCustomer(int);
+	void setIdShippingAddress(int);
+	void setIdBillingAddress(int);
 	int getIdOrder();
 	String^ getOrderReference();
 	DateTime^ getDeliveryDate();
 	DateTime^ getIssueDate();
 	DateTime^ getPayDate();
 	int getIdCustomer();
+	int getIdShippingAddress();
+	int getIdBillingAddress();
 };
