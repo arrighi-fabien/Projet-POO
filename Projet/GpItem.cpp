@@ -102,7 +102,7 @@ DataSet^ GpItem::itemPreview(String^ item_reference, String^ item_name) {
 		data = this->getDb()->executeQuerySelect("SELECT item_reference FROM item WHERE item_reference LIKE '" + item_reference + "%'", "Preview");
 		for (int i = 0; i < data->Tables[0]->Rows->Count; i++) {
 			data2 = this->getDb()->executeQuerySelect(first_part_query + "item_reference = '" + data->Tables[0]->Rows[i]->ItemArray[0]->ToString() + "'" + end_part_query, "Preview");
-			data3->Tables[0]->Rows->Add(data2->Tables[0]->Rows[0]->ItemArray[0]->ToString());
+			data3->Tables[0]->Rows->Add(data2->Tables[0]->Rows[0]->ItemArray);
 		}
 	}
 	else if (item_name != "") {
