@@ -71,7 +71,8 @@ namespace Projet {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button15;
 	private: System::Windows::Forms::Button^ button14;
-	private: System::Windows::Forms::Button^ button13;
+	private: System::Windows::Forms::Button^ btn_stat_total_customer;
+
 
 	private: System::Windows::Forms::Button^ button11;
 	private: System::Windows::Forms::Button^ button10;
@@ -84,7 +85,8 @@ namespace Projet {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::Windows::Forms::TextBox^ tb_stat_total_customer;
+
 
 	private: System::Windows::Forms::Button^ btn_staff_search;
 	private: System::Windows::Forms::Button^ btn_client_search;
@@ -181,14 +183,14 @@ namespace Projet {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->tb_stat_total_customer = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button15 = (gcnew System::Windows::Forms::Button());
 			this->button14 = (gcnew System::Windows::Forms::Button());
-			this->button13 = (gcnew System::Windows::Forms::Button());
+			this->btn_stat_total_customer = (gcnew System::Windows::Forms::Button());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->btn_stat_commercial_value = (gcnew System::Windows::Forms::Button());
@@ -613,14 +615,14 @@ namespace Projet {
 			// tabPage6
 			// 
 			this->tabPage6->Controls->Add(this->label7);
-			this->tabPage6->Controls->Add(this->textBox6);
+			this->tabPage6->Controls->Add(this->tb_stat_total_customer);
 			this->tabPage6->Controls->Add(this->label6);
 			this->tabPage6->Controls->Add(this->label5);
 			this->tabPage6->Controls->Add(this->textBox5);
 			this->tabPage6->Controls->Add(this->comboBox1);
 			this->tabPage6->Controls->Add(this->button15);
 			this->tabPage6->Controls->Add(this->button14);
-			this->tabPage6->Controls->Add(this->button13);
+			this->tabPage6->Controls->Add(this->btn_stat_total_customer);
 			this->tabPage6->Controls->Add(this->button11);
 			this->tabPage6->Controls->Add(this->button10);
 			this->tabPage6->Controls->Add(this->btn_stat_commercial_value);
@@ -637,24 +639,24 @@ namespace Projet {
 			// 
 			// label7
 			// 
-			this->label7->Location = System::Drawing::Point(12, 74);
+			this->label7->Location = System::Drawing::Point(9, 8);
 			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(75, 19);
 			this->label7->TabIndex = 14;
 			this->label7->Text = L"Numéro client";
 			// 
-			// textBox6
+			// tb_stat_total_customer
 			// 
-			this->textBox6->Location = System::Drawing::Point(12, 94);
-			this->textBox6->Margin = System::Windows::Forms::Padding(2);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(146, 20);
-			this->textBox6->TabIndex = 13;
+			this->tb_stat_total_customer->Location = System::Drawing::Point(9, 28);
+			this->tb_stat_total_customer->Margin = System::Windows::Forms::Padding(2);
+			this->tb_stat_total_customer->Name = L"tb_stat_total_customer";
+			this->tb_stat_total_customer->Size = System::Drawing::Size(146, 20);
+			this->tb_stat_total_customer->TabIndex = 13;
 			// 
 			// label6
 			// 
-			this->label6->Location = System::Drawing::Point(110, 13);
+			this->label6->Location = System::Drawing::Point(414, 85);
 			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(75, 15);
@@ -663,7 +665,7 @@ namespace Projet {
 			// 
 			// label5
 			// 
-			this->label5->Location = System::Drawing::Point(12, 12);
+			this->label5->Location = System::Drawing::Point(316, 84);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(30, 15);
@@ -672,7 +674,7 @@ namespace Projet {
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(110, 30);
+			this->textBox5->Location = System::Drawing::Point(414, 102);
 			this->textBox5->Margin = System::Windows::Forms::Padding(2);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(76, 20);
@@ -685,7 +687,7 @@ namespace Projet {
 				L"Janvier", L"Février", L"Mars", L"Avril", L"Mai",
 					L"Juin", L"Juillet", L"Aout", L"Septembre", L"Octobre", L"Novembre", L"Décembre"
 			});
-			this->comboBox1->Location = System::Drawing::Point(12, 30);
+			this->comboBox1->Location = System::Drawing::Point(316, 102);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(92, 21);
@@ -693,7 +695,7 @@ namespace Projet {
 			// 
 			// button15
 			// 
-			this->button15->Location = System::Drawing::Point(326, 12);
+			this->button15->Location = System::Drawing::Point(377, 28);
 			this->button15->Margin = System::Windows::Forms::Padding(2);
 			this->button15->Name = L"button15";
 			this->button15->Size = System::Drawing::Size(84, 37);
@@ -703,7 +705,7 @@ namespace Projet {
 			// 
 			// button14
 			// 
-			this->button14->Location = System::Drawing::Point(192, 22);
+			this->button14->Location = System::Drawing::Point(496, 94);
 			this->button14->Margin = System::Windows::Forms::Padding(2);
 			this->button14->Name = L"button14";
 			this->button14->Size = System::Drawing::Size(70, 34);
@@ -711,19 +713,20 @@ namespace Projet {
 			this->button14->Text = L"Chiffre d\'affaires";
 			this->button14->UseVisualStyleBackColor = true;
 			// 
-			// button13
+			// btn_stat_total_customer
 			// 
-			this->button13->Location = System::Drawing::Point(162, 84);
-			this->button13->Margin = System::Windows::Forms::Padding(2);
-			this->button13->Name = L"button13";
-			this->button13->Size = System::Drawing::Size(84, 39);
-			this->button13->TabIndex = 6;
-			this->button13->Text = L"Total achats client";
-			this->button13->UseVisualStyleBackColor = true;
+			this->btn_stat_total_customer->Location = System::Drawing::Point(159, 18);
+			this->btn_stat_total_customer->Margin = System::Windows::Forms::Padding(2);
+			this->btn_stat_total_customer->Name = L"btn_stat_total_customer";
+			this->btn_stat_total_customer->Size = System::Drawing::Size(84, 39);
+			this->btn_stat_total_customer->TabIndex = 6;
+			this->btn_stat_total_customer->Text = L"Total achats client";
+			this->btn_stat_total_customer->UseVisualStyleBackColor = true;
+			this->btn_stat_total_customer->Click += gcnew System::EventHandler(this, &MyForm::btn_stat_total_customer_Click);
 			// 
 			// button11
 			// 
-			this->button11->Location = System::Drawing::Point(251, 14);
+			this->button11->Location = System::Drawing::Point(428, 18);
 			this->button11->Margin = System::Windows::Forms::Padding(2);
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(84, 37);
@@ -733,7 +736,7 @@ namespace Projet {
 			// 
 			// button10
 			// 
-			this->button10->Location = System::Drawing::Point(236, 49);
+			this->button10->Location = System::Drawing::Point(496, 47);
 			this->button10->Margin = System::Windows::Forms::Padding(2);
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(80, 44);
@@ -743,7 +746,7 @@ namespace Projet {
 			// 
 			// btn_stat_commercial_value
 			// 
-			this->btn_stat_commercial_value->Location = System::Drawing::Point(369, 84);
+			this->btn_stat_commercial_value->Location = System::Drawing::Point(9, 77);
 			this->btn_stat_commercial_value->Margin = System::Windows::Forms::Padding(2);
 			this->btn_stat_commercial_value->Name = L"btn_stat_commercial_value";
 			this->btn_stat_commercial_value->Size = System::Drawing::Size(77, 51);
@@ -754,7 +757,7 @@ namespace Projet {
 			// 
 			// btn_stat_restocking
 			// 
-			this->btn_stat_restocking->Location = System::Drawing::Point(450, 84);
+			this->btn_stat_restocking->Location = System::Drawing::Point(127, 77);
 			this->btn_stat_restocking->Margin = System::Windows::Forms::Padding(2);
 			this->btn_stat_restocking->Name = L"btn_stat_restocking";
 			this->btn_stat_restocking->Size = System::Drawing::Size(116, 52);
@@ -765,7 +768,7 @@ namespace Projet {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(394, 4);
+			this->button6->Location = System::Drawing::Point(465, 7);
 			this->button6->Margin = System::Windows::Forms::Padding(2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(80, 41);
@@ -867,12 +870,12 @@ namespace Projet {
 	// Order part
 	//
 	private: System::Void btn_order_create_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (this->tb_order_customer->Text != "") {
+		if (this->tb_order_customer->Text != "" && Regex::IsMatch(this->tb_order_customer->Text, "^[0-9]{1,10}$")) {
 			OrderForm^ orderForm = gcnew OrderForm(1, Convert::ToInt32(this->tb_order_customer->Text));
 			orderForm->ShowDialog();
 		}
 		else {
-			MessageBox::Show("Veuillez entrer un id de client", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void btn_order_search_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -898,6 +901,22 @@ namespace Projet {
 		for (int i = 0; i < this->dataGridView2->Columns->Count; i++) {
 			this->dataGridView2->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
 		}
+	}
+	private: System::Void btn_stat_total_customer_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (!Regex::IsMatch(this->tb_stat_total_customer->Text, "^[0-9]{1,10}$")) {
+			MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		int id_customer = Convert::ToInt32(this->tb_stat_total_customer->Text);
+		String^ total_customer = gpStat->getTotalSpendCustomer(id_customer);
+		DataTable^ dt = gcnew DataTable();
+		dt->Columns->Add("Total client n°" + id_customer);
+		dt->Rows->Add(total_customer);
+		this->dataGridView2->DataSource = dt;
+		for (int i = 0; i < this->dataGridView2->Columns->Count; i++) {
+			this->dataGridView2->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
+		}
+		delete dt;
 	}
 	//
 	// All part

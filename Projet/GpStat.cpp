@@ -32,3 +32,17 @@ String^ GpStat::getStockCommercialValue() {
 	String^ total_str = Convert::ToString(total + " €");
 	return total_str;
 }
+
+String^ GpStat::getTotalSpendCustomer(int id_customer) {
+	float total = 0;
+	this->getDb()->executeQuerySelect("SELECT SUM(item_price_et * (vat_rate + 1) * quantity) FROM item_price JOIN order_contain ON item_price.id_item_price = order_contain.id_item_price JOIN orders ON order_contain.id_order = orders.id_order WHERE id_customer = " + id_customer, "Stat");
+	DataSet^ data = this->getDb()->getDataSet();
+	//detect if dataset id null
+	if (data->Tables["Stat"]->Rows[0]->ItemArray[0] != System::DBNull::Value) {
+		total = Convert::ToSingle(data->Tables["Stat"]->Rows[0]->ItemArray[0]);
+		total = roundf(total * 100) / 100;
+		String^ total_str = Convert::ToString(total + " €");
+		return total_str;
+	}
+	MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+}

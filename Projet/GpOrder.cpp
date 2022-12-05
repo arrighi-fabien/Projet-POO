@@ -101,7 +101,7 @@ void GpOrder::deleteOrder() {
 
 DataSet^ GpOrder::orderPreview(String^ order_reference, String^ customer_lname) {
 	DataSet^ data;
-	String^ first_part_query = "SELECT id_order, orders.id_customer, order_reference, issue_date, customer.first_name, customer.last_name FROM orders JOIN customer ON orders.id_customer = customer.id_customer WHERE ";
+	String^ first_part_query = "SELECT id_order, orders.id_customer, order_reference AS Référence_commande, issue_date AS Passage_commande, customer.last_name AS Nom_client, customer.first_name AS Prénom_client FROM orders JOIN customer ON orders.id_customer = customer.id_customer WHERE ";
 	String^ end_part_query = " ORDER BY issue_date DESC";
 	if (order_reference != "") {
 		data = this->getDb()->executeQuerySelect(first_part_query + "order_reference LIKE '" + order_reference + "%'" + end_part_query, "Preview");

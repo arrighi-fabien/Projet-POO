@@ -24,7 +24,7 @@ public:
 	DataSet^ getBillingAddress();
 	DataSet^ getShippingAddress();
 	DatabaseConnection^ getDb();
-	void selectCustomer(int);
+	bool selectCustomer(int);
 	void insertCustomer();
 	void updateCustomer();
 	void deleteCustomer();

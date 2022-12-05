@@ -86,16 +86,34 @@ DataSet^ GpItem::priceHistory() {
 
 DataSet^ GpItem::itemPreview(String^ item_reference, String^ item_name) {
 	DataSet^ data;
+	DataSet^ data2;
+	DataSet^ data3 = gcnew DataSet();
+	data3->Tables->Add("Preview");
+	data3->Tables[0]->Columns->Add("");
+	data3->Tables[0]->Columns->Add("");
+	data3->Tables[0]->Columns->Add("Référence");
+	data3->Tables[0]->Columns->Add("Nom");
+	data3->Tables[0]->Columns->Add("Prix HT");
+	data3->Tables[0]->Columns->Add("Taux TVA");
+	data3->Tables[0]->Columns->Add("Stock");
 	String^ first_part_query = "SELECT TOP 1 item.id_item, id_item_price, item_reference AS Référence, item_name AS Désignation, item_price_et AS Prix_HT, vat_rate AS Taux_TVA, in_stock AS Stock FROM item JOIN item_price ON item.id_item = item_price.id_item WHERE ";
 	String^ end_part_query = " ORDER BY date_change DESC";
 	if (item_reference != "") {
-		data = this->getDb()->executeQuerySelect(first_part_query + "item_reference LIKE '" + item_reference + "%'" + end_part_query, "Preview");
+		data = this->getDb()->executeQuerySelect("SELECT item_reference FROM item WHERE item_reference LIKE '" + item_reference + "%'", "Preview");
+		for (int i = 0; i < data->Tables[0]->Rows->Count; i++) {
+			data2 = this->getDb()->executeQuerySelect(first_part_query + "item_reference = '" + data->Tables[0]->Rows[i]->ItemArray[0]->ToString() + "'" + end_part_query, "Preview");
+			data3->Tables[0]->Rows->Add(data2->Tables[0]->Rows[0]->ItemArray[0]->ToString());
+		}
 	}
 	else if (item_name != "") {
-		data = this->getDb()->executeQuerySelect(first_part_query + "item_name LIKE '" + item_name + "%'" + end_part_query, "Preview");
+		data = this->getDb()->executeQuerySelect("SELECT item_reference FROM item WHERE item_name LIKE '" + item_name + "%'", "Preview");
+		for (int i = 0; i < data->Tables[0]->Rows->Count; i++) {
+			data2 = this->getDb()->executeQuerySelect(first_part_query + "item_reference = '" + data->Tables[0]->Rows[i]->ItemArray[0]->ToString() + "'" + end_part_query, "Preview");
+			data3->Tables[0]->Rows->Add(data2->Tables[0]->Rows[0]->ItemArray);
+		}
 	}
 	else {
-		return data;
+		return data3;
 	}
-	return data;
+	return data3;
 }

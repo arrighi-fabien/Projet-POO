@@ -562,7 +562,12 @@ namespace Projet {
 		}
 #pragma endregion
 	private: System::Void OrderForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		gpCustomer->selectCustomer(this->id_customer);
+		if (!gpCustomer->selectCustomer(this->id_customer)) {
+			MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			//close the form
+			this->Close();
+			return;
+		}
 		this->dgv_shipping_address->DataSource = gpCustomer->getShippingAddress();
 		this->dgv_shipping_address->DataMember = "CustomerShippingAddress";
 		this->dgv_shipping_address->Columns[0]->Visible = false;

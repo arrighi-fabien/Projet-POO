@@ -2,6 +2,7 @@
 #include "DatabaseConnection.h"
 #include <math.h>
 using namespace System;
+using namespace System::Windows::Forms;
 
 ref class GpStat {
 private:
@@ -12,4 +13,5 @@ public:
 	DatabaseConnection^ getDb();
 	DataSet^ getItemUnderRestockingLevel();
 	String^ getStockCommercialValue();
+	String^ getTotalSpendCustomer(int);
 };

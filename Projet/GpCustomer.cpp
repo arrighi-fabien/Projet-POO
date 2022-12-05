@@ -46,9 +46,13 @@ DatabaseConnection^ GpCustomer::getDb() {
 	return this->db;
 }
 
-void GpCustomer::selectCustomer(int id) {
+bool GpCustomer::selectCustomer(int id) {
 	this->getDb()->executeQuerySelect("SELECT * FROM customer WHERE id_customer = " + id, "Customer");
 	DataSet^ data = this->getDb()->getDataSet();
+	//detect if dataset get line
+	if (data->Tables["Customer"]->Rows->Count == 0) {
+		return false;
+	}
 	this->getCustomer()->setIdCustomer(id);
 	this->getCustomer()->setFirstName(Convert::ToString(data->Tables[0]->Rows[0]->ItemArray[1]));
 	this->getCustomer()->setLastName(Convert::ToString(data->Tables[0]->Rows[0]->ItemArray[2]));
@@ -67,7 +71,7 @@ void GpCustomer::selectCustomer(int id) {
 	for (int i = 0; i < this->getBillingAddress()->Tables[0]->Rows->Count; i++) {
 		this->id_billing_address[i] = Convert::ToInt32(this->getBillingAddress()->Tables[0]->Rows[i]->ItemArray[0]);
 	}
-	
+	return true;
 }
 
 void GpCustomer::insertCustomer() {
