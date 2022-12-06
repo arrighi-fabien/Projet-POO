@@ -2,6 +2,7 @@
 #include "GpCustomer.h"
 #include "GpItem.h"
 #include "GpOrder.h"
+#include "PaymentForm.h"
 #include <math.h>
 
 namespace Projet {
@@ -626,6 +627,10 @@ namespace Projet {
 			gpOrder->updateOrder(this->id_shipping_address, this->id_billing_address);
 		}
 		MessageBox::Show("Commande validée", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		if (MessageBox::Show("Voulez-vous passer au paiement de la commande?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			PaymentForm^ paymentForm = gcnew PaymentForm(this->id_order, gpOrder->getOrder()->getOrderReference());
+			paymentForm->ShowDialog();
+		}
 		this->Close();
 	}
 	private: System::Void btn_delete_order_Click(System::Object^ sender, System::EventArgs^ e) {

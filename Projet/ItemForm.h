@@ -339,7 +339,6 @@ namespace Projet {
 		}
 #pragma endregion
 	private: System::Void ItemForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		//for element in gpItem->itemCategory() add to combobox
 		DataSet^ data = gpItem->itemCategory();
 		for (int i = data->Tables[0]->Rows->Count - 1; i >= 0; i--) {
 			this->comboBox1->Items->Add(data->Tables[0]->Rows[i]->ItemArray[1]->ToString());

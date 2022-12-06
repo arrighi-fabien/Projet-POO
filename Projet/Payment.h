@@ -1,5 +1,7 @@
 #pragma once
+#include "DatabaseConnection.h"
 using namespace System;
+using namespace System::Data;
 
 ref class Payment {
 private:
@@ -20,4 +22,5 @@ public:
 	float getPaymentAmount();
 	int getIdPaymentMethod();
 	String^ getPaymentMethod();
+	DataSet^ getPaymentMethods(DatabaseConnection^ db);
 };

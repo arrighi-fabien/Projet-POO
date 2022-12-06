@@ -47,3 +47,9 @@ int Payment::getIdPaymentMethod() {
 String^ Payment::getPaymentMethod() {
 	return this->payment_method;
 }
+
+DataSet^ Payment::getPaymentMethods(DatabaseConnection^ db) {
+	DataSet^ ds = gcnew DataSet();
+	ds = db->executeQuerySelect("SELECT * FROM payment_method", "payment_method");
+	return ds;
+}
