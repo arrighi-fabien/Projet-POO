@@ -79,6 +79,7 @@ namespace Projet {
 	private: int id_shipping_address;
 	private: int id_billing_address;
 	private: int id_order;
+	private: float total_cart_wt = 0;
 	private: GpItem^ gpItem = gcnew GpItem();
 	private: GpCustomer^ gpCustomer = gcnew GpCustomer();
 	private: GpOrder^ gpOrder = gcnew GpOrder();
@@ -540,7 +541,6 @@ namespace Projet {
 	}
 	private: System::Void dataGridView1_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		float total_cart_et = 0;
-		float total_cart_wt = 0;
 		float quantity;
 		float discount;
 		for (int i = 0; i < this->dataGridView1->Rows->Count; i++) {
@@ -568,9 +568,9 @@ namespace Projet {
 		total_cart_et = roundf(total_cart_et * 100) / 100;
 		this->label16->Text = Convert::ToString(total_cart_et + " €");
 		for (int i = 0; i < this->dataGridView1->Rows->Count; i++) {
-			total_cart_wt += Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[4]->Value) * (Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[5]->Value) + 1) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
+			this->total_cart_wt += Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[4]->Value) * (Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[5]->Value) + 1) * Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value) * (1 - Convert::ToSingle(this->dataGridView1->Rows[i]->Cells[7]->Value) / 100);
 		}
-		total_cart_wt = roundf(total_cart_wt * 100) / 100;
+		this->total_cart_wt = roundf(this->total_cart_wt * 100) / 100;
 		this->label15->Text = Convert::ToString(total_cart_wt + " €");
 	}
 	private: System::Void btn_valid_order_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -628,7 +628,7 @@ namespace Projet {
 		}
 		MessageBox::Show("Commande validée", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		if (MessageBox::Show("Voulez-vous passer au paiement de la commande?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			PaymentForm^ paymentForm = gcnew PaymentForm(this->id_order, gpOrder->getOrder()->getOrderReference());
+			PaymentForm^ paymentForm = gcnew PaymentForm(this->id_order, gpOrder->getOrder()->getOrderReference(), this->total_cart_wt);
 			paymentForm->ShowDialog();
 		}
 		this->Close();
