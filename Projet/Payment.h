@@ -23,4 +23,6 @@ public:
 	int getIdPaymentMethod();
 	String^ getPaymentMethod();
 	DataSet^ getPaymentMethods(DatabaseConnection^ db);
+	void savePayment(int, DataSet^);
+	DataSet^ getPayments(DatabaseConnection^ db, int id_order);
 };
