@@ -7,6 +7,13 @@ GpOrder::GpOrder() {
 	db = gcnew DatabaseConnection();
 }
 
+GpOrder::~GpOrder() {
+	delete order;
+	delete order_contain;
+	delete customer;
+	delete db;
+}
+
 void GpOrder::setOrder(Orders^ order) {
 	this->order = order;
 }

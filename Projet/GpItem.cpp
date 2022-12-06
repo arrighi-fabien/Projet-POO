@@ -6,6 +6,12 @@ GpItem::GpItem() {
 	this->db = gcnew DatabaseConnection();
 }
 
+GpItem::~GpItem() {
+	delete this->item;
+	delete this->itemPrice;
+	delete this->db;
+}
+
 void GpItem::setItem(Item^ item) {
 	this->item = item;
 }

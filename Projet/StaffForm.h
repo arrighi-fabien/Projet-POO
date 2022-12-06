@@ -40,12 +40,11 @@ namespace Projet {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~StaffForm()
-		{
-			if (components)
-			{
+		~StaffForm() {
+			if (components) {
 				delete components;
 			}
+			delete gpStaff;
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ tb_staff_fname;

@@ -14,6 +14,7 @@ private:
 	DatabaseConnection^ db;
 public:
 	GpOrder();
+	~GpOrder();
 	void setOrder(Orders^ order);
 	void setOrderContain(DataSet^ order_contain);
 	void setPreviousOrderContain(DataSet^ previous_order_contain);

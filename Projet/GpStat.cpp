@@ -4,6 +4,10 @@ GpStat::GpStat() {
 	db = gcnew DatabaseConnection();
 }
 
+GpStat::~GpStat() {
+	delete db;
+}
+
 void GpStat::setDb(DatabaseConnection^ db) {
 	this->db = db;
 }
@@ -13,7 +17,7 @@ DatabaseConnection^ GpStat::getDb() {
 }
 
 DataSet^ GpStat::getItemUnderRestockingLevel() {
-	this->getDb()->executeQuerySelect("SELECT item_reference, item_name, in_stock, restocking_level FROM Item WHERE in_stock < restocking_level", "Stat");
+	this->getDb()->executeQuerySelect("SELECT item_reference AS Référence, item_name AS Désignation, in_stock AS Stock, restocking_level As Niveau_réapprovisionnement FROM Item WHERE in_stock < restocking_level", "Stat");
 	return this->getDb()->getDataSet();
 }
 
@@ -45,4 +49,14 @@ String^ GpStat::getTotalSpendCustomer(int id_customer) {
 		return total_str;
 	}
 	MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+}
+
+DataSet^ GpStat::getTop10Item() {
+	this->getDb()->executeQuerySelect("SELECT TOP 10 item_reference AS Référence, item_name AS Désignation, SUM(quantity) AS Quantité_vendue FROM orders JOIN order_contain ON orders.id_order = order_contain.id_order RIGHT JOIN item ON order_contain.id_item = item.id_item GROUP BY item_name, item_reference ORDER BY SUM(quantity) DESC", "Stat");
+	return this->getDb()->getDataSet();
+}
+
+DataSet^ GpStat::getWorst10Item() {
+	this->getDb()->executeQuerySelect("SELECT * FROM (SELECT TOP 10 item_reference AS Référence, item_name AS Désignation, SUM(quantity) AS Quantité_vendue FROM orders JOIN order_contain ON orders.id_order = order_contain.id_order RIGHT JOIN item ON order_contain.id_item = item.id_item GROUP BY item_name, item_reference ORDER BY SUM(quantity) ASC) AS a ORDER BY Quantité_vendue DESC", "Stat");
+	return this->getDb()->getDataSet();
 }

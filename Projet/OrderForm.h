@@ -45,6 +45,9 @@ namespace Projet {
 			if (components) {
 				delete components;
 			}
+			delete gpCustomer;
+			delete gpItem;
+			delete gpOrder;
 		}
 	private: System::Windows::Forms::DataGridView^ dgv_shipping_address;
 	protected:
@@ -172,9 +175,6 @@ namespace Projet {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// dgv_shipping_address
-			// 
 			this->dgv_shipping_address->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_shipping_address->Location = System::Drawing::Point(13, 177);
 			this->dgv_shipping_address->Name = L"dgv_shipping_address";
@@ -183,27 +183,18 @@ namespace Projet {
 			this->dgv_shipping_address->Size = System::Drawing::Size(657, 122);
 			this->dgv_shipping_address->TabIndex = 28;
 			this->dgv_shipping_address->CellContentDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrderForm::dgv_shipping_address_CellContentDoubleClick);
-			// 
-			// label5
-			// 
 			this->label5->Location = System::Drawing::Point(11, 316);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(190, 11);
 			this->label5->TabIndex = 27;
 			this->label5->Text = L"Addresse de facturation";
-			// 
-			// label4
-			// 
 			this->label4->Location = System::Drawing::Point(11, 162);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(157, 15);
 			this->label4->TabIndex = 26;
 			this->label4->Text = L"Addresse de livraison";
-			// 
-			// dgv_billing_address
-			// 
 			this->dgv_billing_address->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_billing_address->Location = System::Drawing::Point(13, 331);
 			this->dgv_billing_address->Margin = System::Windows::Forms::Padding(2);
@@ -213,18 +204,12 @@ namespace Projet {
 			this->dgv_billing_address->Size = System::Drawing::Size(657, 122);
 			this->dgv_billing_address->TabIndex = 25;
 			this->dgv_billing_address->CellContentDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrderForm::dgv_billing_address_CellContentDoubleClick);
-			// 
-			// label1
-			// 
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(13, 103);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(86, 13);
 			this->label1->TabIndex = 29;
 			this->label1->Text = L"Date de livraison";
-			// 
-			// dateTimePicker1
-			// 
 			this->dateTimePicker1->CustomFormat = L"d MMMM yyyy";
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->dateTimePicker1->Location = System::Drawing::Point(16, 119);
@@ -232,9 +217,6 @@ namespace Projet {
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->Size = System::Drawing::Size(162, 20);
 			this->dateTimePicker1->TabIndex = 30;
-			// 
-			// dataGridView1
-			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->dataGridViewTextBoxColumn1,
@@ -247,100 +229,52 @@ namespace Projet {
 			this->dataGridView1->Size = System::Drawing::Size(643, 418);
 			this->dataGridView1->TabIndex = 31;
 			this->dataGridView1->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrderForm::dataGridView1_CellEndEdit);
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"id_item";
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"id_item_price";
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Référence";
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			// 
-			// dataGridViewTextBoxColumn4
-			// 
 			this->dataGridViewTextBoxColumn4->HeaderText = L"Nom";
 			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
-			// 
-			// dataGridViewTextBoxColumn5
-			// 
 			this->dataGridViewTextBoxColumn5->HeaderText = L"Prix HT";
 			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
-			// 
-			// dataGridViewTextBoxColumn6
-			// 
 			this->dataGridViewTextBoxColumn6->HeaderText = L"Taux TVA";
 			this->dataGridViewTextBoxColumn6->Name = L"dataGridViewTextBoxColumn6";
-			// 
-			// dataGridViewTextBoxColumn7
-			// 
 			this->dataGridViewTextBoxColumn7->HeaderText = L"Quantité";
 			this->dataGridViewTextBoxColumn7->Name = L"dataGridViewTextBoxColumn7";
-			// 
-			// dataGridViewTextBoxColumn8
-			// 
 			this->dataGridViewTextBoxColumn8->HeaderText = L"Remise (%)";
 			this->dataGridViewTextBoxColumn8->Name = L"dataGridViewTextBoxColumn8";
-			// 
-			// dataGridViewTextBoxColumn9
-			// 
 			this->dataGridViewTextBoxColumn9->HeaderText = L"En stock";
 			this->dataGridViewTextBoxColumn9->Name = L"dataGridViewTextBoxColumn9";
-			// 
-			// dataGridViewTextBoxColumn10
-			// 
 			this->dataGridViewTextBoxColumn10->HeaderText = L"id_order_contain";
 			this->dataGridViewTextBoxColumn10->Name = L"dataGridViewTextBoxColumn10";
-			// 
-			// label2
-			// 
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(711, 19);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(37, 13);
 			this->label2->TabIndex = 32;
 			this->label2->Text = L"Panier";
-			// 
-			// tb_item_ref_search
-			// 
 			this->tb_item_ref_search->Location = System::Drawing::Point(14, 518);
 			this->tb_item_ref_search->Name = L"tb_item_ref_search";
 			this->tb_item_ref_search->Size = System::Drawing::Size(100, 20);
 			this->tb_item_ref_search->TabIndex = 33;
-			// 
-			// tb_item_name_search
-			// 
 			this->tb_item_name_search->Location = System::Drawing::Point(133, 518);
 			this->tb_item_name_search->Name = L"tb_item_name_search";
 			this->tb_item_name_search->Size = System::Drawing::Size(165, 20);
 			this->tb_item_name_search->TabIndex = 34;
-			// 
-			// label3
-			// 
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(130, 502);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(94, 13);
 			this->label3->TabIndex = 35;
 			this->label3->Text = L"Désignation article";
-			// 
-			// label6
-			// 
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(13, 502);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(88, 13);
 			this->label6->TabIndex = 36;
 			this->label6->Text = L"Référence article";
-			// 
-			// dataGridView2
-			// 
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Location = System::Drawing::Point(16, 545);
 			this->dataGridView2->Name = L"dataGridView2";
@@ -348,9 +282,6 @@ namespace Projet {
 			this->dataGridView2->Size = System::Drawing::Size(654, 124);
 			this->dataGridView2->TabIndex = 37;
 			this->dataGridView2->CellContentDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrderForm::dataGridView2_CellContentDoubleClick);
-			// 
-			// btn_command_search
-			// 
 			this->btn_command_search->Location = System::Drawing::Point(327, 515);
 			this->btn_command_search->Name = L"btn_command_search";
 			this->btn_command_search->Size = System::Drawing::Size(75, 23);
@@ -358,53 +289,35 @@ namespace Projet {
 			this->btn_command_search->Text = L"Recherche";
 			this->btn_command_search->UseVisualStyleBackColor = true;
 			this->btn_command_search->Click += gcnew System::EventHandler(this, &OrderForm::btn_command_search_Click);
-			// 
-			// label7
-			// 
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(212, 112);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(170, 26);
 			this->label7->TabIndex = 39;
 			this->label7->Text = L"Adresse de livraison sélectionnée :\r\nn°";
-			// 
-			// label8
-			// 
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(225, 125);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(13, 13);
 			this->label8->TabIndex = 40;
 			this->label8->Text = L"0";
-			// 
-			// label9
-			// 
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(418, 125);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(13, 13);
 			this->label9->TabIndex = 42;
 			this->label9->Text = L"0";
-			// 
-			// label10
-			// 
 			this->label10->AutoSize = true;
 			this->label10->Location = System::Drawing::Point(405, 112);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(182, 26);
 			this->label10->TabIndex = 41;
 			this->label10->Text = L"Adresse de facturation sélectionnée :\r\nn°";
-			// 
-			// tb_customer_id
-			// 
 			this->tb_customer_id->Location = System::Drawing::Point(14, 48);
 			this->tb_customer_id->Name = L"tb_customer_id";
 			this->tb_customer_id->ReadOnly = true;
 			this->tb_customer_id->Size = System::Drawing::Size(100, 20);
 			this->tb_customer_id->TabIndex = 43;
-			// 
-			// btn_valid_order
-			// 
 			this->btn_valid_order->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_valid_order->Location = System::Drawing::Point(1120, 519);
@@ -414,52 +327,34 @@ namespace Projet {
 			this->btn_valid_order->Text = L"Passer la commande";
 			this->btn_valid_order->UseVisualStyleBackColor = true;
 			this->btn_valid_order->Click += gcnew System::EventHandler(this, &OrderForm::btn_valid_order_Click);
-			// 
-			// label11
-			// 
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(11, 32);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(81, 13);
 			this->label11->TabIndex = 47;
 			this->label11->Text = L"Identifiant client";
-			// 
-			// label12
-			// 
 			this->label12->AutoSize = true;
 			this->label12->Location = System::Drawing::Point(135, 32);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(57, 13);
 			this->label12->TabIndex = 49;
 			this->label12->Text = L"Nom client";
-			// 
-			// tb_customer_lname
-			// 
 			this->tb_customer_lname->Location = System::Drawing::Point(138, 48);
 			this->tb_customer_lname->Name = L"tb_customer_lname";
 			this->tb_customer_lname->ReadOnly = true;
 			this->tb_customer_lname->Size = System::Drawing::Size(100, 20);
 			this->tb_customer_lname->TabIndex = 48;
-			// 
-			// label13
-			// 
 			this->label13->AutoSize = true;
 			this->label13->Location = System::Drawing::Point(256, 32);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(71, 13);
 			this->label13->TabIndex = 51;
 			this->label13->Text = L"Prénom client";
-			// 
-			// tb_customer_fname
-			// 
 			this->tb_customer_fname->Location = System::Drawing::Point(259, 48);
 			this->tb_customer_fname->Name = L"tb_customer_fname";
 			this->tb_customer_fname->ReadOnly = true;
 			this->tb_customer_fname->Size = System::Drawing::Size(100, 20);
 			this->tb_customer_fname->TabIndex = 50;
-			// 
-			// label14
-			// 
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -468,9 +363,6 @@ namespace Projet {
 			this->label14->Size = System::Drawing::Size(265, 20);
 			this->label14->TabIndex = 52;
 			this->label14->Text = L"Montant total de la commande TTC :";
-			// 
-			// label15
-			// 
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -479,9 +371,6 @@ namespace Projet {
 			this->label15->Size = System::Drawing::Size(31, 20);
 			this->label15->TabIndex = 53;
 			this->label15->Text = L"0 €";
-			// 
-			// label16
-			// 
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -490,9 +379,6 @@ namespace Projet {
 			this->label16->Size = System::Drawing::Size(31, 20);
 			this->label16->TabIndex = 55;
 			this->label16->Text = L"0 €";
-			// 
-			// label17
-			// 
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -501,9 +387,6 @@ namespace Projet {
 			this->label17->Size = System::Drawing::Size(261, 20);
 			this->label17->TabIndex = 54;
 			this->label17->Text = L"Montant total de la commande HT  :";
-			// 
-			// btn_delete_order
-			// 
 			this->btn_delete_order->Location = System::Drawing::Point(1156, 478);
 			this->btn_delete_order->Name = L"btn_delete_order";
 			this->btn_delete_order->Size = System::Drawing::Size(97, 35);
@@ -511,9 +394,6 @@ namespace Projet {
 			this->btn_delete_order->Text = L"Supprimer la commande";
 			this->btn_delete_order->UseVisualStyleBackColor = true;
 			this->btn_delete_order->Click += gcnew System::EventHandler(this, &OrderForm::btn_delete_order_Click);
-			// 
-			// OrderForm
-			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1369, 681);
@@ -564,7 +444,6 @@ namespace Projet {
 	private: System::Void OrderForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (!gpCustomer->selectCustomer(this->id_customer)) {
 			MessageBox::Show("Veuillez entrer un id de client valide", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			//close the form
 			this->Close();
 			return;
 		}
@@ -593,11 +472,12 @@ namespace Projet {
 			//insert code to fill the datagridview with the order items
 			for (int i = 0; i < gpOrder->getOrderContain()->Tables[0]->Rows->Count; i++) {
 				this->dataGridView1->Rows->Add(gpOrder->getOrderContain()->Tables[0]->Rows[i]->ItemArray);
+				this->dataGridView1->Rows[i]->Cells[8]->Value = Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[8]->Value) + Convert::ToInt32(this->dataGridView1->Rows[i]->Cells[6]->Value);
 			}
-			this->dataGridView1->Columns[0]->Visible = false;
+			this->dataGridView1->Columns[0]->Visible = true;
 			this->dataGridView1->Columns[1]->Visible = false;
 			this->dataGridView1->Columns[8]->Visible = false;
-			/*this->dataGridView1->Columns[9]->Visible = false;*/
+			this->dataGridView1->Columns[9]->Visible = false;
 			//search if id address in the datagridview1 and get the index
 			for (int i = 0; i < this->dgv_shipping_address->Rows->Count; i++) {
 				if (Convert::ToInt32(this->dgv_shipping_address->Rows[i]->Cells[0]->Value) == gpOrder->getOrder()->getIdShippingAddress()) {
@@ -647,7 +527,8 @@ namespace Projet {
 		this->dataGridView1->Columns[3]->ReadOnly = true;
 		this->dataGridView1->Columns[4]->ReadOnly = true;
 		this->dataGridView1->Columns[5]->ReadOnly = true;
-		this->dataGridView1->Columns[8]->Visible = false;
+		this->dataGridView1->Columns[8]->Visible = true;
+		this->dataGridView1->Columns[9]->Visible = false;
 		//add content from data to datagridview
 		this->dataGridView1->Rows->Add(data->Tables[0]->Rows[0]->ItemArray);
 		int last_insert = this->dataGridView1->Rows->Count - 2;

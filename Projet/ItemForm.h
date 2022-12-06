@@ -43,6 +43,7 @@ namespace Projet {
 			if (components) {
 				delete components;
 			}
+			delete gpItem;
 		}
 	private: System::Windows::Forms::TextBox^ tb_item_ref;
 	protected:

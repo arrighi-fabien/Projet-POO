@@ -9,9 +9,12 @@ private:
 	DatabaseConnection^ db;
 public:
 	GpStat();
+	~GpStat();
 	void setDb(DatabaseConnection^);
 	DatabaseConnection^ getDb();
 	DataSet^ getItemUnderRestockingLevel();
 	String^ getStockCommercialValue();
 	String^ getTotalSpendCustomer(int);
+	DataSet^ getTop10Item();
+	DataSet^ getWorst10Item();
 };

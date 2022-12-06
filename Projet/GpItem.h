@@ -12,6 +12,7 @@ private:
 	DatabaseConnection^ db;
 public:
 	GpItem();
+	~GpItem();
 	void setItem(Item^ item);
 	void setItemPrice(ItemPrice^ itemPrice);
 	void setDb(DatabaseConnection^ db);

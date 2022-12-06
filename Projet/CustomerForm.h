@@ -39,12 +39,11 @@ namespace Projet {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~CustomerForm()
-		{
-			if (components)
-			{
+		~CustomerForm() {
+			if (components) {
 				delete components;
 			}
+			delete gpCustomer;
 		}
 	private: System::Windows::Forms::DateTimePicker^ dp_customer_birth_date;
 	protected:
