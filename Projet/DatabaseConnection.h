@@ -11,10 +11,12 @@ private:
 	SqlCommand^ sql_command;
 	SqlDataAdapter^ sql_data_adapter;
 	DataSet^ sql_data_set;
+	bool is_connected = false;
 public:
 	DatabaseConnection();
 	void setQuery(String^ query);
 	void executeQuery(String^ query);
 	DataSet^ executeQuerySelect(String^ query, String^ table_name);
+	int executeQueryInsert(String^ query);
 	DataSet^ getDataSet();
 };
